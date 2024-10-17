@@ -1,0 +1,41 @@
+<section class="vh-100 login-section">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="d-flex justify-content-center">
+              <img class="me-3" style="height: 40px; width: 40px" src="assets/logo/efly-logo.svg" alt="">
+              <h3 class="mb-5 primary fw-bold">eFly</h3>
+            </div>
+            <div class="h4 mt-4 text-start fw-bolder secondary">Welcome Back</div>
+            <div class="h5 mb-5 text-start secondary fw-medium font-responsive">
+              Log in to enjoy our shopping experience!
+            </div>
+
+
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="username"  formControlName="username">
+                <label class="primary" for="floatingInput">User Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                <label class="primary" for="floatingPassword">Password</label>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form1Example3"  formControlName="keepLogin"/>
+                <label class="form-check-label secondary" for="form1Example3"> Remember password </label>
+              </div>
+
+              <button class="btn btn-primary btn-lg btn-block px-5 w-100" type="submit" [disabled]="!loginForm.valid">Login</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
