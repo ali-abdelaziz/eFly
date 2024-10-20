@@ -1,1 +1,262 @@
-<p>products works!</p>
+<app-top-navigation class="mb-5" />
+
+<div class="products-container container padding">
+  <div class="row h-100 py-5 ">
+    <!-- Arrangements Sidebar -->
+    <div class="col-lg-3 height">
+      <div class="accordion" id="accordionExample">
+        <!-- Arrangements by -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Arrangements by
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="all">
+                  <label class="form-check-label primary-color primary-color" for="all">
+                    All
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="bestSellers">
+                  <label class="form-check-label primary-color" for="bestSellers">
+                    Best Sellers
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="latest">
+                  <label class="form-check-label primary-color" for="latest">
+                    Latest
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="older">
+                  <label class="form-check-label primary-color" for="older">
+                    Older
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Categories -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Categories
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="allCategories">
+                  <label class="form-check-label primary-color" for="allCategories">
+                    All
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="category">
+                  <label class="form-check-label primary-color" for="category">
+                    electronics
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="jewelery">
+                  <label class="form-check-label primary-color" for="jewelery">
+                    jewelery
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="menClothing">
+                  <label class="form-check-label primary-color" for="menClothing">
+                    men's clothing
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="womenClothing">
+                  <label class="form-check-label primary-color" for="womenClothing">
+                    women's clothing
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Brands -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Brands
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="brand1">
+                  <label class="form-check-label primary-color" for="brand1">
+                    Brand 1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="brand2">
+                  <label class="form-check-label primary-color" for="brand2">
+                    Brand 2
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Categories -->
+    <div class="col-lg-9 col-sm-12 px-5">
+      <div class="w-100 grid align-items-start p-sm-2   gap-5 " style="margin-top: 0px;">
+        <div class="d-flex item-container justify-content-center align-items-center flex-column "
+          (click)="this.getAllProducts()">
+          <div class="item d-flex justify-content-center align-items-center">
+            <img [src]="'assets/images/icons/element-3.svg'" alt="all" srcset="">
+          </div>
+          <span style="text-align: center;">All</span>
+        </div>
+        <div class="d-flex item-container justify-content-center align-items-center flex-column ">
+          <div class="item d-flex justify-content-center align-items-center ">
+            <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
+          </div>
+          <span style="text-align: center;">electronics</span>
+        </div>
+        <div class="d-flex item-container justify-content-center align-items-center flex-column ">
+          <div class="item d-flex justify-content-center align-items-center ">
+            <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
+          </div>
+          <span style="text-align: center;">jewelery</span>
+        </div>
+        <div class="d-flex item-container justify-content-center align-items-center flex-column ">
+          <div class="item d-flex justify-content-center align-items-center ">
+            <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
+          </div>
+          <span style="text-align: center;">men's clothing</span>
+        </div>
+        <div class="d-flex item-container justify-content-center align-items-center flex-column ">
+          <div class="item d-flex justify-content-center align-items-center ">
+            <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
+          </div>
+          <span style="text-align: center;">women's clothing</span>
+        </div>
+      </div>
+
+    </div>
+          <!-- Products -->
+          <div class="w-100 product-grid m-auto mt-3 align-items-start gap-4">
+            <!-- Product Card -->
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-container transition">
+              <div class="product-img-container w-100 ">
+                <img src="assets/images/img/product.jpg" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+                <div class="addCard-button" role="button">
+                  <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+                </div>
+              </div>
+              <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+                <p class="category">category name</p>
+                <p class="name">product name</p>
+                <p class="code">product code</p>
+                <div class="d-flex gap-2 ">
+                  <p class="price">100 EGP</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>

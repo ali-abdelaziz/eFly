@@ -1,0 +1,106 @@
+<div class="d-flex flex-column top-navigation-container container-fluid fixed-top">
+  <div class="d-flex flex-wrap justify-content-lg-between padding">
+    <!-- Welcome -->
+    <div class="welcome-header d-flex align-items-center justify-content-between wdith gap-4 mt-2">
+      <div class="d-flex align-items-center gap-3" type="button" routerLink="/products">
+        <img style="height: 40px; width: 40px" src="assets/logo/efly-logo.svg" alt="eFly" />
+        <h3 class="primary fw-bold">eFly</h3>
+      </div>
+      <div class="formsContainer d-flex justify-content-between align-items-center">
+        <div class="notSearch"></div>
+        <div class="search align-items-center justify-content-start">
+          <form [formGroup]="searchForm" style="width: 100%">
+            <div class="form-floating " >
+              <input type="email" class="form-control" id="floatingInput" placeholder=""  formControlName="search">
+              <label class="" for="floatingInput">
+                <span>
+                  <img src="assets/images/icons/search-normal.svg" alt="" srcset="" />
+                  Search
+                </span>
+              </label>
+            </div>
+          </form>
+        </div>
+        <!-- Buttons -->
+        <div class="d-flex align-items-center gap-3 mt-3 mt-md-0 btns-top-navigation">
+          <div class="circle-btn let" [routerLink]="'/cart'">
+            <img  src="assets/images/icons/bag.svg"  alt="">
+          </div>
+          <div  class="circle-btn let">
+            <img src="assets/images/icons/notification.svg" alt="">
+          </div>
+          @if(!authService.isLogin()){
+          <button class="btn btn-primary primary-btn white">
+            Logout
+          </button>
+
+
+
+          }@else{
+          <div class="dropdown user-list">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span class="primary Caption">
+                <span class="d-block">
+                  Welcome
+                </span>
+                <span class="d-block">
+                  {{ userData()?.full_name }}
+                </span>
+              </span>
+              <img src="./assets/images/icons/user/arrow-down.svg" alt="" />
+            </button>
+            <ul class="dropdown-menu">
+              @if(rolesService.isRolesAuthorized([roleEnum.admin])){
+              <li>
+                <button class="item-list" routerLink="/admin/customers">
+                  <img src="assets/images/icons/user/monitor.svg" alt="monitor" />
+                  <span class="grey-600">
+                    Control Panel
+                  </span>
+                </button>
+              </li>
+              }
+              <li (click)="authService.logout()">
+                <button class="item-list logout">
+                  <img src="assets/images/icons/user/logout.svg" alt="logout" />
+                  <span class="red-500">
+                    Logout
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          }
+          <div class="nav-item" (click)="changeLanguage()">
+            {{ dir.getValue() == "rtl" ? "English" : "العربية" }}
+          </div>
+          <div class="nav-item toggle">
+              <button class="btn btn-light"
+                (click)="mobileToggle = !mobileToggle">
+                <img src="assets/images/icons/list.svg" alt="">
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (mobileToggle) {
+  <div class="pagesContainer-mobile flex-column  justify-content-between align-items-start">
+    <div class="nav-item" routerLinkActive="active" routerLink="/">
+      Home
+    </div>
+    <!-- <div class="nav-item mt-2">Products</div>
+    <div class="nav-item mt-2">Services</div>
+    <div class="nav-item mt-2">About</div> -->
+      <div [routerLink]="'/cart'" class="nav-item mt-2 d-gap-2 mobile-auth">
+        <!-- <img  src="assets/images/icons/bag.svg" alt=""> -->
+         Cart
+      </div>
+      <div class="nav-item mt-2 gap-2 mobile-auth">
+        <!-- <img src="assets/images/icons/notification.svg" alt=""> -->
+         Notifications
+      </div>
+  </div>
+  }
+</div>

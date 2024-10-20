@@ -8,8 +8,8 @@
               <img class="me-3" style="height: 40px; width: 40px" src="assets/logo/efly-logo.svg" alt="">
               <h3 class="mb-5 primary fw-bold">eFly</h3>
             </div>
-            <div class="h4 mt-4 text-start fw-bolder secondary">Welcome Back</div>
-            <div class="h5 mb-5 text-start secondary fw-medium font-responsive">
+            <div class="h4 mt-4 text-start fw-bolder primary-color">Welcome Back</div>
+            <div class="h5 mb-5 text-start primary-color fw-medium font-responsive">
               Log in to enjoy our shopping experience!
             </div>
 
@@ -17,20 +17,22 @@
             <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="username"  formControlName="username">
-                <label class="primary" for="floatingInput">User Name</label>
+                <label class="" for="floatingInput">User Name</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
-                <label class="primary" for="floatingPassword">Password</label>
+                <label class="" for="floatingPassword">Password</label>
               </div>
 
               <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-start mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form1Example3"  formControlName="keepLogin"/>
-                <label class="form-check-label secondary" for="form1Example3"> Remember password </label>
-              </div>
+              <div class="w-100 d-flex justify-content-between px-2 mt-4 mb-4">
+                <app-custom-check-box [id]="'rememberMe'" [isChecked]="getField('keepLogin')?.value"
+                  (handleClick)="checkBoxHandler($event, 'keepLogin')"
+                  [label]="'Remember Me'"></app-custom-check-box>
 
-              <button class="btn btn-primary btn-lg btn-block px-5 w-100" type="submit" [disabled]="!loginForm.valid">Login</button>
+                <a class="link">Forgot Password!</a>
+              </div>
+              <button class="login-btn btn background btn-lg btn-block px-5 w-100" type="submit">Login</button>
             </form>
 
           </div>

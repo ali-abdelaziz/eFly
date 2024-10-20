@@ -1,0 +1,5 @@
+<div class="custom-checkbox" [ngClass]="showfocusShadow ? 'show-focus' :'' " >
+  <input type="checkbox" [id]='id' [value]="value" (change)="click($event)" [checked]="isChecked" [indeterminate]="isIndeterminate" [disabled]="isDisabled"/>
+  <!-- <label [for]="id"> {{ label ? (label | translate) : ''}}</label> -->
+  <label [for]="id"></label>
+</div>

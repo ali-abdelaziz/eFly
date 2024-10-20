@@ -1,0 +1,110 @@
+:host {
+  .custom-checkbox {
+    position: relative;
+  }
+
+  .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .custom-checkbox label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-inline-start: 30px;
+    cursor: pointer;
+  }
+
+  // Checkbox style
+  .custom-checkbox label:before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    padding: 0.5rem;
+    border: 1px solid var(--grey-600);
+    border-radius: 4px;
+    background-color: #fff;
+  }
+
+  // Checkbox on hover
+  .custom-checkbox input:hover:not(:disabled) + label:before {
+    background-color: var(--blue-100);
+  }
+
+  .custom-checkbox input:disabled + label:before {
+    border-color: var(--grey-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+  }
+
+  // when to show focus and active background
+  .show-focus {
+    // Checkbox on active/focus
+    .custom-checkbox input:active + label:before,
+    input:focus + label:before {
+      box-shadow: 0 0 0 4px var(--blue-50);
+    }
+  }
+
+  // Checkbox checked style
+  .custom-checkbox input:checked:not(:disabled) + label:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: url('../../../../assets/Images/icons/checkbox-mark-sm.svg');
+    border-color: var(--blue-500);
+    text-align: center;
+  }
+
+  // Checkbox checked and disbaled style
+  .custom-checkbox input:checked:disabled + label:before {
+    content: url('../../../../assets/Images/icons/check-mark-disabled.svg');
+  }
+
+
+
+  // Checkbox indeterminate style
+  .custom-checkbox input:indeterminate + label:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '\02212';
+    border-color: var(--blue-500);
+    color: var(--blue-500);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    // line-height: 18px;
+  }
+
+  // Large Screens
+  @media (min-width: 992px) {
+    .custom-checkbox label:before {
+      width: 24px;
+      height: 24px;
+    }
+
+    // Checkbox checked icon larger
+    .custom-checkbox input:checked:not(:disabled) + label:before {
+      content: url('../../../../assets/Images/icons/checkbox-mark.svg') !important;
+    }
+  }
+  // Medium Screens
+  @media (min-width: 576px) and (max-width: 992px) {
+    .custom-checkbox label:before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  // Small Screens
+  @media (max-width: 576px) {
+    .custom-checkbox label:before {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

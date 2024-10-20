@@ -1,18 +1,44 @@
 .login-section {
   background-image: linear-gradient(
     to right,
-    var(--primary),
-    var(--dprimary)
+    var(--background-color),
+    var(--background-color)
   );
 }
 input {
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--background-color);
+  border-radius: 10px;
+  background: var(--background-color);
   &:-webkit-autofill,
   &:focus,
   &:active {
-    border: 2px solid var(--primary);
+    border: 2px solid var(--background-color);
+  background: var(--background-color);
     // box-shadow: 1px 1px 1px 1px var(--primary);
     -webkit-text-fill-color: var(--primary);
     box-shadow: none;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.login-btn {
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  &:hover {
+      background: var(--primary);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      transition: all .3s ease-in-out;
+    }
+  &:disabled {
+    background: var(--background);
   }
 }

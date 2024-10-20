@@ -21,7 +21,7 @@ body {
 
 :root {
   --primary: #7f00ff;
-  --dprimary: #b468ff;
+  --dprimary: #5a00cc;
   --secondary: #43c8d4;
   --dark: #1c336a;
   --dark-hover-btn: #33497e;
@@ -35,6 +35,15 @@ body {
 
   --bg-primary: #7f00ff;
   --bg-secondary: #43c8d4;
+
+  --bg-color: #ffffff;
+  --primary-color: #2c3c4d;
+  --secondary-color: #2c3c4d1a;
+  --star-color: #fec107;
+  --write-review-text-color: white;
+  --write-review-bg-color: #2c3c4d;
+  --paginate-color: #2c3c4d;
+  --background-color: #f6f7fa;
 
   /* Colors */
 
@@ -111,6 +120,11 @@ body {
   --blue-50: #ebeffa;
 }
 
+.transition {
+  transform: translateY(0px);
+  transition: all 0.3s ease-in-out;
+}
+
 // Scroll style
 
 ::-webkit-scrollbar {
@@ -134,5 +148,17 @@ body {
 [dir="rtl"] {
   a {
     text-align: start;
+  }
+  input {
+    text-align: start;
+    direction: rtl;
+  }
+  .form-floating > label {
+    text-align: start;
+    left: unset !important;
+  }
+  .form-floating > .form-control {
+    text-align: start;
+    direction: rtl;
   }
 }
