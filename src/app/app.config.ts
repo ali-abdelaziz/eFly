@@ -3,11 +3,13 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideToastr } from 'ngx-toastr';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,7 +31,16 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideClientHydration(),
-    provideHttpClient(),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()),
+    provideToastr({
+      preventDuplicates: true,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      timeOut: 5000,
+    }),
+    provideAnimations(),
 
   ]
 };

@@ -1,3 +1,11 @@
 {
- "welcome": "Welcome to eFly"
+  "common": {
+    "welcome": "Welcome to eFly"
+  },
+  "snackbar": {
+    "validateyourformdata": "please validate all required data.",
+    "createdSuccessfully": "Created successfully",
+    "updatedSuccessfully": "Updated successfully",
+    "deletedSuccessfully": "Deleted successfully"
+  }
 }

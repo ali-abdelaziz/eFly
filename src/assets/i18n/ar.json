@@ -1,3 +1,11 @@
 {
- "welcome": "مرحبا"
+ "common": {
+  "welcome": "مرحبا"
+ },
+"snackbar": {
+  "validateyourformdata": "يرجى اكمال البيانات المطلوبة",
+  "createdSuccessfully": "تم الانشاء بنجاح",
+  "updatedSuccessfully": "تم التعديل بنجاح",
+  "deletedSuccessfully": "تم الحذف بنجاح"
+}
 }
