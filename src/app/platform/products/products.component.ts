@@ -5,6 +5,8 @@ import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product.model';
 import { SearchProductsService } from '../../services/search-products.service';
 import { SharedModule } from '../../shared/shared.module';
+import { RolesService } from '../../auth/services/roles.service';
+import { roleEnum } from '../../shared/roles/role.enum';
 
 @Component({
   selector: 'app-products',
@@ -15,17 +17,19 @@ import { SharedModule } from '../../shared/shared.module';
 })
 export class ProductsComponent implements OnInit {
   products: WritableSignal<Product[]> = signal([]);
+  roleEnum = roleEnum;
 
   constructor(
     private productsService: ProductsService,
-    public productsSearchService: SearchProductsService
+    public productsSearchService: SearchProductsService,
+    public rolesService: RolesService,
   ) {
     effect(() => {
       // console.log('test changes', productsSearchService.searchProducts());
       if (this.productsSearchService.searchProducts() !== '') {
         this.getAllProducts(this.productsSearchService.searchProducts())
       } else {
-        this.getAllProducts()
+        // this.getAllProducts()
       }
     });
   }

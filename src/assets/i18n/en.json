@@ -3,7 +3,7 @@
     "welcome": "Welcome to eFly"
   },
   "snackbar": {
-    "validateyourformdata": "please validate all required data.",
+    "validateyourformdata": "Please fill out all required data.",
     "createdSuccessfully": "Created successfully",
     "updatedSuccessfully": "Updated successfully",
     "deletedSuccessfully": "Deleted successfully"

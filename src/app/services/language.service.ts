@@ -16,17 +16,26 @@ export class LanguageService {
     private translate: TranslateService,
     // private cookieService: CookieService,
     @Inject(PLATFORM_ID) platformId: Object,
-    private localStorgeService: LocalstorageService
+    private localStorgeService: LocalstorageService,
   ) {
+    const savedLang = this.defaultLang;
+    if (savedLang) {
+      this.defaultLang = savedLang;
+    }
+    this.translate.setDefaultLang(this.defaultLang);
+    this.translate.use(this.defaultLang);
     if (this.authService.userLoginData()) this.setLanguage();
     this.platformId = platformId;
   }
   dir$ = new BehaviorSubject<'rtl' | 'ltr'>('ltr');
   Lang$ = new BehaviorSubject<'en' | 'ar'>('en');
+  defaultLang = 'en';
   dirListener$ = this.dir$.asObservable();
 
   setLanguage() {
     if (isPlatformBrowser(this.platformId)) {
+      // const savedLang = localStorage.getItem('lang');
+      this.translate?.setDefaultLang(this.Lang$?.getValue());
       let prefered_language = this.authService.userLoginData()?.user
         ?.prefered_language
         ? this.authService.userLoginData()?.user?.prefered_language
@@ -48,6 +57,11 @@ export class LanguageService {
           dir: this.dir$.getValue(),
         })
       );
+      // if (savedLang) {
+      //   this.defaultLang = savedLang;
+      // }
+      // this.translate.setDefaultLang(this.defaultLang);
+      // this.translate.use(this.defaultLang);
     }
   }
 

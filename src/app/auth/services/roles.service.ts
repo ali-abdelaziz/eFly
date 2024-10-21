@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { LocalstorageService } from './localstorage.service';
+import { roleEnum } from '../../shared/roles/role.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -11,15 +12,13 @@ export class RolesService {
   ) {}
 
   getRole() {
-    return (<User | null>(
-      JSON.parse(this.localStorgeService.getItem('user') as string)
-    ))?.role;
-  }
+    // return (<User | null>(
+    //   JSON.parse(this.localStorgeService.getItem('user') as string)
+    // ))?.role;
 
-  getPermissions() {
-    return (<User | null>(
-      JSON.parse(this.localStorgeService.getItem('user') as string)
-    ))?.permissions;
+    // handle user role to be static
+    // return ['user'];
+    return ['admin'];
   }
 
   isRolesAuthorized(roles: string[]) {
@@ -34,15 +33,4 @@ export class RolesService {
     }
   }
 
-  isPermissionsAuthorized(permissions: string[]) {
-    if (permissions.length == 0) {
-      return true;
-    }
-    const userPermissions = this.getPermissions();
-    if (userPermissions) {
-      return permissions.some((x) => userPermissions.includes(x));
-    } else {
-      return false;
-    }
-  }
 }

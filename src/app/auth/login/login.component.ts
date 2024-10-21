@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['',  [Validators.required]],
-      role: ['user'],
+      role: [''],
       keepLogin: false
     });
   }
@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authService
-    .login(this.loginForm.value.username, this.loginForm.value.password).subscribe();
+    .login(this.loginForm.value.username, this.loginForm.value.password)
+    .subscribe();
     console.log("loginForm:", this.loginForm.value);
-    // this.router.navigate(['/products']);
   }
 
   checkBoxHandler(e: any, field: string) {

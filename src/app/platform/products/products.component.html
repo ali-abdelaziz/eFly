@@ -1,5 +1,8 @@
 <app-top-navigation class="mb-5" />
 
+@if(rolesService.isRolesAuthorized([roleEnum.user])){
+
+
 <div class="products-container container padding">
   <div class="row h-100 py-5 ">
     <!-- Arrangements Sidebar -->
@@ -182,3 +185,11 @@
           </div>
   </div>
 </div>
+<!-- Empty Platform for Admin Users -->
+} @else {
+  <div class="empty-state d-flex flex-column justify-content-center align-items-center m-auto ">
+    <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
+    <span class="primary-color fs-3 fw-bold">Please login with a normal user account</span>
+    <span class="text-muted fs-6 fw-bold">to enjoy your shopping experience</span>
+  </div>
+}

@@ -10,8 +10,8 @@
         <div class="notSearch"></div>
         <div class="search align-items-center justify-content-start">
           <form [formGroup]="searchForm" style="width: 100%">
-            <div class="form-floating " >
-              <input type="email" class="form-control" id="floatingInput" placeholder=""  formControlName="search">
+            <div class="form-floating ">
+              <input type="email" class="form-control" id="floatingInput" placeholder="" formControlName="search">
               <label class="" for="floatingInput">
                 <span>
                   <img src="assets/images/icons/search-normal.svg" alt="" srcset="" />
@@ -24,19 +24,20 @@
         <!-- Buttons -->
         <div class="d-flex align-items-center gap-3 mt-3 mt-md-0 btns-top-navigation">
           <div class="circle-btn let" [routerLink]="'/cart'">
-            <img  src="assets/images/icons/bag.svg"  alt="">
+            <img src="assets/images/icons/bag.svg" alt="">
           </div>
-          <div  class="circle-btn let">
+          <div class="circle-btn let">
             <img src="assets/images/icons/notification.svg" alt="">
           </div>
-          @if(!authService.isLogin()){
-          <button class="btn btn-primary primary-btn white">
+
+          <!-- <button class="btn btn-primary primary-btn white" (click)="authService.logout()">
             Logout
-          </button>
+          </button> -->
 
 
 
-          }@else{
+          @if(authService.isLogin()){
+
           <div class="dropdown user-list">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -45,18 +46,18 @@
                   Welcome
                 </span>
                 <span class="d-block">
-                  {{ userData()?.full_name }}
+                  {{ userData()?.username }}
                 </span>
               </span>
               <img src="./assets/images/icons/user/arrow-down.svg" alt="" />
             </button>
             <ul class="dropdown-menu">
               @if(rolesService.isRolesAuthorized([roleEnum.admin])){
-              <li>
-                <button class="item-list" routerLink="/admin/customers">
+              <li routerLink="/admin">
+                <button class="item-list">
                   <img src="assets/images/icons/user/monitor.svg" alt="monitor" />
                   <span class="grey-600">
-                    Control Panel
+                    Admin Dashboard
                   </span>
                 </button>
               </li>
@@ -72,15 +73,15 @@
             </ul>
           </div>
           }
+
           <div class="nav-item" (click)="changeLanguage()">
             {{ dir.getValue() == "rtl" ? "English" : "العربية" }}
           </div>
           <div class="nav-item toggle">
-              <button class="btn btn-light"
-                (click)="mobileToggle = !mobileToggle">
-                <img src="assets/images/icons/list.svg" alt="">
-              </button>
-            </div>
+            <button class="btn btn-light" (click)="mobileToggle = !mobileToggle">
+              <img src="assets/images/icons/list.svg" alt="">
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -93,14 +94,14 @@
     <!-- <div class="nav-item mt-2">Products</div>
     <div class="nav-item mt-2">Services</div>
     <div class="nav-item mt-2">About</div> -->
-      <div [routerLink]="'/cart'" class="nav-item mt-2 d-gap-2 mobile-auth">
-        <!-- <img  src="assets/images/icons/bag.svg" alt=""> -->
-         Cart
-      </div>
-      <div class="nav-item mt-2 gap-2 mobile-auth">
-        <!-- <img src="assets/images/icons/notification.svg" alt=""> -->
-         Notifications
-      </div>
+    <div [routerLink]="'/cart'" class="nav-item mt-2 d-gap-2 mobile-auth">
+      <!-- <img  src="assets/images/icons/bag.svg" alt=""> -->
+      Cart
+    </div>
+    <div class="nav-item mt-2 gap-2 mobile-auth">
+      <!-- <img src="assets/images/icons/notification.svg" alt=""> -->
+      Notifications
+    </div>
   </div>
   }
 </div>

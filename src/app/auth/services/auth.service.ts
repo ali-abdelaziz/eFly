@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { Login } from '../models/login.model';
 import { Router } from '@angular/router';
@@ -21,6 +21,8 @@ export class AuthService {
 
   isLogin = signal<boolean>(false);
   userLoginData = signal<Login | any>(null);
+  userLoginDataEffect = effect(() => { });
+  token = signal<string>('');
 
 
   login(username: string, password: string) {
@@ -29,8 +31,14 @@ export class AuthService {
       tap((res: any) => {
         this.isLogin.set(true);
         this.userLoginData.set(res);
+        this.token.set(res.token);
         this.saveLoginResponseToLocalStorage(res);
-        this.router.navigate(['/products']);
+        let userRoles = this.userLoginData()?.user?.role;
+        if(userRoles?.includes('admin')) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/products']);
+        }
       })
     )
   }
@@ -38,9 +46,7 @@ export class AuthService {
   logout() {
     this.isLogin.set(false);
     this.userLoginData.set(null);
-    this.router.navigate(['/']);
     this.clearUserFromLocalStorage();
-    // this.clearTokenExpirationFromLocalStorage();
     this.clearTokenFromLocalStorage();
     this.router.navigateByUrl('/')
   }
@@ -53,10 +59,6 @@ export class AuthService {
   clearUserFromLocalStorage() {
     return this.localStorgeService.removeItem('user');
   }
-
-  // clearTokenExpirationFromLocalStorage() {
-  //   return this.localStorgeService.removeItem('tokenexpire');
-  // }
 
   clearTokenFromLocalStorage() {
     return this.localStorgeService.removeItem('token');
