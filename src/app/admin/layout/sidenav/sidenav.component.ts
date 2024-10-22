@@ -42,7 +42,7 @@ export class SidebnavComponent implements OnInit {
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
-      console.log(isVisible)
+      // console.log(isVisible)
       this.isSidebarVisible = isVisible;
     });
     this.languageService.setLanguage();

@@ -20,7 +20,7 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible: any) => {
-      console.log(isVisible)
+      // console.log(isVisible)
       this.isSidebarVisible = isVisible;
     });
   }
