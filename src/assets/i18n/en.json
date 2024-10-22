@@ -7,5 +7,9 @@
     "createdSuccessfully": "Created successfully",
     "updatedSuccessfully": "Updated successfully",
     "deletedSuccessfully": "Deleted successfully"
+  },
+  "EmptyState": {
+    "needNormalUser": "Please login with a normal user account!",
+    "toEnjoyShopping": "to enjoy your shopping experience."
   }
 }

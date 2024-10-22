@@ -77,11 +77,18 @@
     margin: 20px;
   }
 
-  .empty-state {
-    top: 40%;
-    position: absolute;
-    right: 35%;
-  }
+
+    .img {
+      width: 20.7rem;
+      height: 20.7rem;
+      object-fit: contain;
+    }
+
+    .description {
+      text-align: center;
+      font-size: 1.5rem;
+      font-style: normal;
+    }
 
   .accordion {
     --bs-accordion-active-bg: var(--background-color);

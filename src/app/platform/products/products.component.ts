@@ -7,11 +7,12 @@ import { SearchProductsService } from '../../services/search-products.service';
 import { SharedModule } from '../../shared/shared.module';
 import { RolesService } from '../../auth/services/roles.service';
 import { roleEnum } from '../../shared/roles/role.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [TopNavigationComponent, CommonModule, SharedModule],
+  imports: [TopNavigationComponent, CommonModule, SharedModule, TranslateModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })

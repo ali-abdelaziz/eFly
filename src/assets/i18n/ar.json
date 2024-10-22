@@ -7,5 +7,9 @@
   "createdSuccessfully": "تم الانشاء بنجاح",
   "updatedSuccessfully": "تم التعديل بنجاح",
   "deletedSuccessfully": "تم الحذف بنجاح"
+},
+"EmptyState": {
+  "needNormalUser": "يرجي تسجيل الدخول كمستخدم عادي للمتابعة",
+  "toEnjoyShopping": "للاستمتاع بتجربة تسوق المنتجات"
 }
 }
