@@ -6,11 +6,12 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { LocalstorageService } from '../../../auth/services/localstorage.service';
 import { LanguageService } from '../../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [

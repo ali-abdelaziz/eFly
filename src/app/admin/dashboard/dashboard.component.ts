@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { SidebarService } from '../services/sidebar.service';
 import { CommonModule } from '@angular/common';
 import { SidebnavComponent } from '../layout/sidenav/sidenav.component';
+import { ProductsComponent } from "../products/products.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent, SidebnavComponent, RouterOutlet, CommonModule],
+  imports: [HeaderComponent, SidebnavComponent, RouterOutlet, CommonModule, ProductsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
