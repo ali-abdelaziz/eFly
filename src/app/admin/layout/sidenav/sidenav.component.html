@@ -1,0 +1,34 @@
+<div class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }"
+  [@fadeInOut]>
+  <ul>
+    <li>
+      <a routerLinkActive="active" (click)="toggleSubmenu()">
+        <span class="menu-item">Dashboard</span>
+        <!-- <span class="sub-menu-item" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }"></span> -->
+      </a>
+      <!-- Sub-menu for Dashboard with left padding -->
+      <ul *ngIf="isSubmenuOpen" class="sub-menu">
+        <li>
+          <a routerLink="/customers" routerLinkActive="active">
+            <span class="menu-item">Customers</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/carts" routerLinkActive="active">
+            <span class="menu-item">Carts</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="/categories" routerLinkActive="active">
+        <span class="menu-item">Categories</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/products" routerLinkActive="active">
+        <span class="menu-item">Products</span>
+      </a>
+    </li>
+  </ul>
+</div>
