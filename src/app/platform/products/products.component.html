@@ -59,22 +59,22 @@
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <div class="">
-                <div class="form-check">
+              @for (category of Categories; track $index) {
+              <div class=""  type="button" (click)="this.getProductsByCategory(category)">
+                <!-- <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="allCategories">
                   <label class="form-check-label primary-color" for="allCategories">
                     All
                   </label>
-                </div>
-                @for (category of Categories; track $index) {
+                </div> -->
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="category">
                   <label class="form-check-label primary-color" for="category">
-                    {{category}}
+                    {{category | titlecase}}
                   </label>
                 </div>
-              }
               </div>
+            }
             </div>
           </div>
         </div>
@@ -112,54 +112,56 @@
     <!-- Categories -->
     <div class="col-lg-9 col-sm-12 px-5">
       <div class="w-100 grid align-items-start p-sm-2   gap-5 " style="margin-top: 0px;">
-        <div class="d-flex item-container justify-content-center align-items-center flex-column "
-          (click)="this.getAllProducts()">
+        <!-- All -->
+        <!-- <div class="d-flex item-container justify-content-center align-items-center flex-column "
+          (click)="this.getProductsByCategory(Categories[0])">
           <div class="item d-flex justify-content-center align-items-center">
             <img [src]="'assets/images/icons/element-3.svg'" alt="all" srcset="">
           </div>
           <span style="text-align: center;">All</span>
-        </div>
+        </div> -->
 
         @for (category of Categories; track $index) {
-          <div class="d-flex item-container justify-content-center align-items-center flex-column ">
-            <div class="item d-flex justify-content-center align-items-center ">
-              <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
-            </div>
-            <span style="text-align: center;">{{category}}</span>
+        <div class="d-flex item-container justify-content-center align-items-center flex-column "
+          (click)="this.getProductsByCategory(category)">
+          <div class="item d-flex justify-content-center align-items-center ">
+            <img src="assets/images/icons/products.svg" width="40px" height="40px" alt="" srcset="">
           </div>
+          <span style="text-align: center;">{{category | titlecase}}</span>
+        </div>
         }
       </div>
     </div>
 
-          <!-- Products -->
-          <div class="w-100 product-grid m-auto mt-3 align-items-start gap-4">
-            <!-- Product Card -->
-             @for (product of products(); track $index) {
-               <div class="product-container transition">
-                 <div class="product-img-container w-100 ">
-                   <img src="{{product.image}}" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
-                   <div class="addCard-button" role="button">
-                     <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
-                   </div>
-                 </div>
-                 <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
-                   <p class="category">{{product.category | titlecase}}</p>
-                   <p class="name">{{product.title | truncate: 30}}</p>
-                   <p class="code">Code: #{{product.id}}</p>
-                   <div class="d-flex gap-2 ">
-                     <p class="price">{{product.price}} EGP</p>
-                   </div>
-                 </div>
-               </div>
-             }
+    <!-- Products -->
+    <div class="w-100 product-grid m-auto mt-3 align-items-start gap-4">
+      <!-- Product Card -->
+      @for (product of productsByCategory; track $index) {
+      <div class="product-container transition">
+        <div class="product-img-container w-100 ">
+          <img src="{{product.image}}" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
+          <div class="addCard-button" role="button">
+            <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
           </div>
+        </div>
+        <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
+          <p class="category">{{product.category | titlecase}}</p>
+          <p class="name">{{product.title | truncate: 30}}</p>
+          <p class="code">Code: #{{product.id}}</p>
+          <div class="d-flex gap-2 ">
+            <p class="price">{{product.price}} EGP</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </div>
 <!-- Empty Platform for Admin Users -->
 } @else {
-  <div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">
-    <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
-    <span class="description primary-color fs-3 fw-bold">{{"EmptyState.needNormalUser" | translate}}</span>
-    <span class="description primary fs-6 fw-bold">{{"EmptyState.toEnjoyShopping" | translate}}</span>
-  </div>
+<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">
+  <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
+  <span class="description primary-color fs-3 fw-bold">{{"EmptyState.needNormalUser" | translate}}</span>
+  <span class="description primary fs-6 fw-bold">{{"EmptyState.toEnjoyShopping" | translate}}</span>
+</div>
 }

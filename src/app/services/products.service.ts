@@ -23,4 +23,8 @@ export class ProductsService {
   getCategories() {
     return this.http.get<string[]>(this.api + '/categories');
   }
+
+  getProductsByCategory(category: string) {
+    return this.http.get<Product[]>(this.api + '/category/' + category);
+  }
 }

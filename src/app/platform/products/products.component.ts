@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { RolesService } from '../../auth/services/roles.service';
 import { roleEnum } from '../../shared/roles/role.enum';
 import { TranslateModule } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,10 @@ export class ProductsComponent implements OnInit {
   products: WritableSignal<Product[]> = signal([]);
   roleEnum = roleEnum;
   Categories: string[] = [];
+  category!: string;
+  sort!: string;
+  defaultProduct : BehaviorSubject<any> = new BehaviorSubject('electronics');
+  productsByCategory: Product[] = [];
 
   constructor(
     private productsService: ProductsService,
@@ -53,5 +58,18 @@ export class ProductsComponent implements OnInit {
       this.Categories = data;
     })
   }
+
+  getProductsByCategory(category: string) {
+    this.productsService.getProductsByCategory(category).subscribe((data) => {
+      this.productsByCategory = data;
+    })
+  }
+
+    // Clear filter data
+    clearFilter() {
+      this.category = "";
+      this.sort = "";
+      this.getAllProducts();
+    }
 
 }
