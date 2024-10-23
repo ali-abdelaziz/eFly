@@ -9,11 +9,12 @@ import { RolesService } from '../../auth/services/roles.service';
 import { roleEnum } from '../../shared/roles/role.enum';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [TopNavigationComponent, CommonModule, SharedModule, TranslateModule],
+  imports: [TopNavigationComponent, CommonModule, SharedModule, TranslateModule, FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -65,6 +66,20 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  sortByPrice() {
+    switch (this.sort) {
+      case "low": {
+        this.products.update(products => products.slice().sort((low, high) => low.price - high.price));
+        this.productsByCategory.sort((low, high) => low.price - high.price);
+        break;
+      }
+      case "high": {
+        this.products.update(products => products.slice().sort((low, high) => high.price - low.price));
+        this.productsByCategory.sort((low, high) => high.price - low.price);
+        break;
+      }
+    }
+  }
     // Clear filter data
     clearFilter() {
       this.category = "";

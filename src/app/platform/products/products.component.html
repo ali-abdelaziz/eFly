@@ -7,41 +7,30 @@
   <div class="row h-100 py-5 ">
     <!-- Arrangements Sidebar -->
     <div class="col-lg-3 height">
+      <h5 class="card-title mb-1 primary-color fw-bold">Arrangements by: </h5>
       <div class="accordion" id="accordionExample">
         <!-- Arrangements by -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
               aria-expanded="true" aria-controls="collapseOne">
-              Arrangements by
+              Price
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="all">
-                  <label class="form-check-label primary-color" for="all">
-                    All
+                <div class="form-check" (change)="sortByPrice()">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="lowToHigh" value="low" [(ngModel)]="sort">
+                  <label class="form-check-label primary-color" for="lowToHigh">
+                    Low to high
                   </label>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="bestSellers">
-                  <label class="form-check-label primary-color" for="bestSellers">
-                    Best Sellers
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="latest">
-                  <label class="form-check-label primary-color" for="latest">
-                    Latest
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="older">
-                  <label class="form-check-label primary-color" for="older">
-                    Older
+                <div class="form-check" (change)="sortByPrice()">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="highToLow" value="high" [(ngModel)]="sort">
+                  <label class="form-check-label primary-color" for="highToLow">
+                    High to low
                   </label>
                 </div>
               </div>
@@ -106,6 +95,9 @@
             </div>
           </div>
         </div>
+        <div class="text-center">
+          <button (click)="clearFilter()" class="btn btn-primary primary-btn white mt-4 w-75 rounded-4">Clear Filter</button>
+        </div>
       </div>
     </div>
 
@@ -158,8 +150,7 @@
   </div>
 </div>
 <!-- Empty Platform for Admin Users -->
-} @else {
-<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">
+} @else {<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">
   <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
   <span class="description primary-color fs-3 fw-bold">{{"EmptyState.needNormalUser" | translate}}</span>
   <span class="description primary fs-6 fw-bold">{{"EmptyState.toEnjoyShopping" | translate}}</span>
