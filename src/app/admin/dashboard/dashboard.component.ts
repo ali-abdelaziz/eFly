@@ -8,8 +8,8 @@ import { ProductsComponent } from "../products/products.component";
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [HeaderComponent, SidebnavComponent, RouterOutlet, CommonModule, ProductsComponent],
+  standalone: false,
+  // imports: [HeaderComponent, SidebnavComponent, RouterOutlet, CommonModule, ProductsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

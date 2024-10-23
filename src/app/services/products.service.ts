@@ -8,7 +8,8 @@ import { Product } from '../models/product.model';
 })
 export class ProductsService {
   api = environment.api + 'products'
-  products$: WritableSignal<Product[]> = signal<Product[]>([])
+  products$: WritableSignal<Product[]> = signal<Product[]>([]);
+  categories$: WritableSignal<string[]> = signal<string[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +18,9 @@ export class ProductsService {
     if (search) params = params.append('search', search)
 
     return this.http.get<Product[]>(this.api, { params })
+  }
+
+  getCategories() {
+    return this.http.get<string[]>(this.api + '/categories');
   }
 }

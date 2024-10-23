@@ -24,10 +24,6 @@ export const routes: Routes = [
       roles: [roleEnum.admin]
     },
     canActivate: [AuthGuardcanActivate],
-    loadComponent: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
-  },
-  {
-    path: 'products-dashboard',
-    component: ProductsComponent
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];

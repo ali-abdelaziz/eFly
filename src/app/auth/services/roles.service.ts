@@ -17,8 +17,8 @@ export class RolesService {
     // ))?.role;
 
     // handle user role to be static
-    // return ['user'];
-    return ['admin'];
+    return ['user'];
+    // return ['admin'];
   }
 
   isRolesAuthorized(roles: string[]) {

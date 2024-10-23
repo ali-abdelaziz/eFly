@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ProductsComponent implements OnInit {
   products: WritableSignal<Product[]> = signal([]);
   roleEnum = roleEnum;
+  Categories: string[] = [];
 
   constructor(
     private productsService: ProductsService,
@@ -36,12 +37,20 @@ export class ProductsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllProducts()
+    this.getCategories()
   }
 
   getAllProducts(search = '') {
     this.productsService.getAllProducts(search).subscribe((data) => {
       this.productsService.products$.set(data);
       this.products.set(this.productsService.products$());
+    })
+  }
+
+  getCategories() {
+    this.productsService.getCategories().subscribe((data) => {
+      this.productsService.categories$.set(data);
+      this.Categories = data;
     })
   }
 

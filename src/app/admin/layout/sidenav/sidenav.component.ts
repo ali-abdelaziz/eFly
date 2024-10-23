@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
+  standalone: false,
+  // imports: [CommonModule, RouterModule],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [
