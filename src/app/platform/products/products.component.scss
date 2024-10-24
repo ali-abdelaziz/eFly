@@ -200,26 +200,6 @@
       position: relative;
       height: 228px;
       overflow: hidden;
-
-      .addCard-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 56px;
-        height: 56px;
-        border-radius: 10px;
-        background-color: var(--primary);
-        position: absolute;
-        bottom: 6px;
-        right: 6px;
-        transform: translateY(0);
-        transition: all 0.4s ease-in-out;
-      }
-
-      .addCard-button:hover {
-        transform: translateY(-5px);
-        cursor: pointer;
-      }
     }
   }
 
@@ -239,6 +219,25 @@
     .code {
       font-weight: 400;
       font-size: 14px;
+    }
+    .addCard-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background-color: var(--primary);
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      transform: translateY(0);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .addCard-button:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
     }
 
     .price {

@@ -50,6 +50,7 @@ export class ProductsComponent implements OnInit {
     this.productsService.getAllProducts(search).subscribe((data) => {
       this.productsService.products$.set(data);
       this.products.set(this.productsService.products$());
+      this.productsByCategory = data;
     })
   }
 

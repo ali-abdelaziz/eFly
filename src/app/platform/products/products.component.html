@@ -105,13 +105,13 @@
     <div class="col-lg-9 col-sm-12 px-5">
       <div class="w-100 grid align-items-start p-sm-2   gap-5 " style="margin-top: 0px;">
         <!-- All -->
-        <!-- <div class="d-flex item-container justify-content-center align-items-center flex-column "
-          (click)="this.getProductsByCategory(Categories[0])">
+        <div class="d-flex item-container justify-content-center align-items-center flex-column "
+          (click)="this.getAllProducts()">
           <div class="item d-flex justify-content-center align-items-center">
             <img [src]="'assets/images/icons/element-3.svg'" alt="all" srcset="">
           </div>
           <span style="text-align: center;">All</span>
-        </div> -->
+        </div>
 
         @for (category of Categories; track $index) {
         <div class="d-flex item-container justify-content-center align-items-center flex-column "
@@ -142,6 +142,9 @@
           <p class="code">Code: #{{product.id}}</p>
           <div class="d-flex gap-2 ">
             <p class="price">{{product.price}} EGP</p>
+            <div class="addCard-button" role="button">
+              <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+            </div>
           </div>
         </div>
       </div>
@@ -150,8 +153,7 @@
   </div>
 </div>
 <!-- Empty Platform for Admin Users -->
-} @else {<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">
-  <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
+} @else {<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">  <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
   <span class="description primary-color fs-3 fw-bold">{{"EmptyState.needNormalUser" | translate}}</span>
   <span class="description primary fs-6 fw-bold">{{"EmptyState.toEnjoyShopping" | translate}}</span>
 </div>
