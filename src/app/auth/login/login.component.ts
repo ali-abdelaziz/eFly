@@ -4,11 +4,14 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { CustomCheckBoxComponent } from '../../shared/components/custom-checkbox/custom-checkbox.component';
 import { SnackBarService } from '../services/snackBar.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+import { error } from 'console';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomCheckBoxComponent],
+  imports: [ReactiveFormsModule, CustomCheckBoxComponent, TranslateModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -32,7 +35,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['',  [Validators.required]],
       role: [''],
-      keepLogin: false
+      // keepLogin: false
     });
   }
 
@@ -43,8 +46,14 @@ export class LoginComponent implements OnInit {
     }
     this.authService
     .login(this.loginForm.value.username, this.loginForm.value.password)
-    .subscribe();
+    .subscribe((res) => {
     console.log("loginForm:", this.loginForm.value);
+    }, error => {
+      if (error.status === 401) {
+        this.snackbarService.backEndErrorSnackBar('Unauthorized Credentials');
+        return;
+      }
+    });
   }
 
   checkBoxHandler(e: any, field: string) {

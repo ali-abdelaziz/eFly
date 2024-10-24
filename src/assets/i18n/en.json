@@ -2,6 +2,15 @@
   "common": {
     "welcome": "Welcome to eFly"
   },
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "role": "Role",
+    "keepLogin": "Keep me logged in",
+    "welcomeBack": "Welcome back!",
+    "toEnjoyShopping": "Log in to enjoy your shopping experience!",
+    "login": "Login"
+  },
   "snackbar": {
     "validateyourformdata": "Please fill out all required data.",
     "createdSuccessfully": "Created successfully",

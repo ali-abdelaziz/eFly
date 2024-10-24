@@ -2,6 +2,15 @@
  "common": {
   "welcome": "مرحبا"
  },
+ "login": {
+  "username": "اسم المستخدم",
+  "password": "كلمة المرور",
+  "role": "الدور",
+  "keepLogin": "تذكرني",
+  "welcomeBack": "مرحبا بعودتك",
+  "toEnjoyShopping": "قم بتسجيل الدخول للاستمتاع بمنتجاتنا",
+  "login": "تسجيل الدخول"
+ },
 "snackbar": {
   "validateyourformdata": "يرجى اكمال البيانات المطلوبة",
   "createdSuccessfully": "تم الانشاء بنجاح",
