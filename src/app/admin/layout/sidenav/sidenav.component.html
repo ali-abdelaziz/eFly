@@ -3,31 +3,31 @@
   <ul>
     <li>
       <a routerLinkActive="active" (click)="toggleSubmenu()">
-        <span class="menu-item">Dashboard</span>
+        <span class="menu-item">{{"sidenav.dashboard" | translate}}</span>
         <!-- <span class="sub-menu-item" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }"></span> -->
       </a>
       <!-- Sub-menu for Dashboard with left padding -->
       <ul *ngIf="isSubmenuOpen" class="sub-menu">
         <li>
-          <a routerLink="/customers" routerLinkActive="active">
-            <span class="menu-item">Customers</span>
+          <a  routerLinkActive="active">
+            <span class="menu-item">{{"sidenav.customers" | translate}}</span>
           </a>
         </li>
         <li>
-          <a routerLink="/carts" routerLinkActive="active">
-            <span class="menu-item">Carts</span>
+          <a  routerLinkActive="active">
+            <span class="menu-item">{{"sidenav.carts" | translate}}</span>
           </a>
         </li>
       </ul>
     </li>
     <li>
-      <a routerLink="/categories" routerLinkActive="active">
-        <span class="menu-item">Categories</span>
+      <a  routerLinkActive="active">
+        <span class="menu-item">{{"sidenav.categories" | translate}}</span>
       </a>
     </li>
     <li>
-      <a routerLink="/products-dashboard" >
-        <span class="menu-item">Products</span>
+      <a routerLink="/admin/products" >
+        <span class="menu-item">{{"sidenav.products" | translate}}</span>
       </a>
     </li>
   </ul>

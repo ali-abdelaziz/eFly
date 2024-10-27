@@ -3,7 +3,14 @@
     "welcome": "Welcome",
     "addNew": "Add New",
     "rowsPerPage": "Rows per page",
-    "of": "Of"
+    "of": "Of",
+    "save": "Save",
+    "cancel": "Cancel",
+    "update": "Update",
+    "delete": "Delete",
+    "addedSuccessfully": "Added successfully",
+    "updatedSuccessfully": "Updated successfully",
+    "deletedSuccessfully": "Deleted successfully"
   },
   "login": {
     "username": "Username",
@@ -33,7 +40,11 @@
       "lowToHigh": "Low to High",
       "highToLow": "High to Low",
       "code": "Code",
-      "egp": "EGP"
+      "egp": "EGP",
+      "title": "Title",
+      "category": "Category",
+      "description": "Description",
+      "image": "Image"
     },
     "categories": {
       "categories": "Categories",
@@ -47,5 +58,14 @@
     "home": "Home",
     "cart": "Cart",
     "notifications": "Notifications"
+  },
+  "sidenav": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "carts": "Carts",
+    "categories": "Categories",
+    "products": "Products",
+    "orders": "Orders",
+    "users": "Users"
   }
 }

@@ -1,0 +1,6 @@
+<button class="text-button" (click)="click()">
+  <div class="d-flex align-items-center gap-2">
+      <span class="mt-1" [ngClass]="classesList">{{label|translate}}</span>
+      <img [src]="icon" alt="" *ngIf="showIcon">
+  </div>
+</button>

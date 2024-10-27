@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center gap-3 save-cancel-parent">
+  <app-text-button
+  [label]="cancelLabel"
+  [textColorClass]="'grey-600'"
+  [showIcon]="false"
+  (handleClick)="cancel()"
+  *ngIf="showCancel"
+></app-text-button>
+
+  <app-primary-button
+    [label]="saveLabel | translate"
+    [isLoading]="isLoading"
+    (handleClick)="save()"
+    *ngIf="showSave"
+  ></app-primary-button>
+</div>

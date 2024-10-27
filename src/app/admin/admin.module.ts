@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebnavComponent } from './layout/sidenav/sidenav.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -19,6 +20,7 @@ import { SidebnavComponent } from './layout/sidenav/sidenav.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
+    TranslateModule
   ]
 })
 export class AdminModule { }

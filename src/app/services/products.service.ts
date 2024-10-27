@@ -32,4 +32,16 @@ export class ProductsService {
   getProductsByCategory(category: string) {
     return this.http.get<Product[]>(this.api + '/category/' + category);
   }
+
+  AddProduct(product: Product) {
+    return this.http.post(this.api, product);
+  }
+
+  getProductById(id: string) {
+    return this.http.get<Product>(this.api + '/' + id);
+  }
+
+  updateProduct(id: string, product: Product) {
+    return this.http.put(this.api + '/' + id, product);
+  }
 }

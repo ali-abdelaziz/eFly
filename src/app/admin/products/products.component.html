@@ -30,13 +30,19 @@
 
       </div>
       <div class="dropdown d-flex flex-column ">
-        <div class="px-2 py-2 transition dropdown-toggle d-flex justify-content-flex-end align-items-center"
-          role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="px-2 py-2 transition dropdown-toggle d-flex justify-content-flex-end align-items-center" role="button"
+          type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i role="button" class="fas fa-ellipsis-h primary"></i>
         </div>
-        <ul class="dropdown-menu">
-          <li><button class="dropdown-item primary-color" type="button">Update</button></li>
-          <li><button class="dropdown-item primary-color" type="button">Delete</button></li>
+        <ul class="dropdown-menu" *ngFor="let element of productsService.products$()">
+          <li>
+            <button class="dropdown-item primary-color" [routerLink]="['edit', element.id]" type="button">
+              {{"common.update" | translate}}
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item primary-color" type="button">{{"common.delete" | translate}}</button>
+          </li>
         </ul>
       </div>
     </div>

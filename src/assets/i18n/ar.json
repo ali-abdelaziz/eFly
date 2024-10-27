@@ -3,7 +3,14 @@
     "welcome": "مرحبا",
     "addNew": "اضافة جديد",
     "rowsPerPage": "عدد العناصر فى الصفحة",
-    "of": "من"
+    "of": "من",
+    "save": "حفظ",
+    "cancel": "الغاء",
+    "update": "تعديل",
+    "delete": "حذف",
+    "addedSuccessfully": "تم الاضافة بنجاح",
+    "updatedSuccessfully": "تم التعديل بنجاح",
+    "deletedSuccessfully": "تم الحذف بنجاح"
   },
   "login": {
     "username": "اسم المستخدم",
@@ -33,7 +40,11 @@
       "lowToHigh": "من الأقل الى الأعلى",
       "highToLow": "من الأعلى الى الأقل",
       "code": "الكود",
-      "egp": "جنية"
+      "egp": "جنية",
+      "title": "الاسم",
+      "category": "التصنيف",
+      "description": "الوصف",
+      "image": "الصورة"
     },
     "categories": {
       "categories": "الفئات",
@@ -47,5 +58,14 @@
     "home": "الرئيسية",
     "cart": "عربة التسوق",
     "notifications": "الاشعارات"
+  },
+  "sidenav": {
+    "dashboard": "لوحة التحكم",
+    "customers": "العملاء",
+    "carts": "عربات التسوق",
+    "categories": "الفئات",
+    "products": "المنتجات",
+    "users": "المستخدمين",
+    "orders": "الطلبات"
   }
 }
