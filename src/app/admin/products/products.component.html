@@ -1,5 +1,45 @@
+<div class="products-container container pb-5">
+  <!-- Header -->
+  <div class="d-flex flex-wrap align-items-center justify-content-between mx-3 mb-3">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <app-search-input (filterInput)="filterInputObservable($event)"></app-search-input>
+    </div>
+    <div class="d-flex flex-wrap align-items-center gap-4">
+      <app-primary-button [label]="'common.addNew'" routerLink="add"
+        [suffixIcon]="'../../../assets/images/icons/add.svg'"></app-primary-button>
+    </div>
+  </div>
 
-<div class="container">
-  <p>products works!</p>
-  <button class="btn btn-primary">Add Product</button>
+  <!-- Table -->
+  <ng-container *ngIf="products.length > 0">
+    <div class="w-100 product-table table-responsive overflow-auto align-items-start gap-2 mx-3"
+      *ngFor="let product of products">
+      <div class="d-flex justify-content-start align-items-center fw-bold primary-color h-100">
+        {{product.title | titlecase | truncate: 20}}
+      </div>
+      <div class="d-flex justify-content-start align-items-center primary-color h-100">
+        {{product.category | titlecase}}
+      </div>
+      <div class="d-flex justify-content-center align-items-center primary-color h-100">
+        # {{product.id}}
+      </div>
+      <div class="d-flex justify-content-center align-items-center fw-bold primary-color h-100">
+        {{product.price}} {{"platform.products.egp" | translate}}
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+
+      </div>
+      <div class="dropdown d-flex flex-column ">
+        <div class="px-2 py-2 transition dropdown-toggle d-flex justify-content-flex-end align-items-center"
+          role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i role="button" class="fas fa-ellipsis-h primary"></i>
+        </div>
+        <ul class="dropdown-menu">
+          <li><button class="dropdown-item primary-color" type="button">Update</button></li>
+          <li><button class="dropdown-item primary-color" type="button">Delete</button></li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+
 </div>

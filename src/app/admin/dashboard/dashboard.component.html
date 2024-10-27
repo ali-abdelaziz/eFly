@@ -2,12 +2,12 @@
   <div class="app-header" >
   <app-header></app-header>
 </div>
-<div class="container">
+<div class="content-container">
   <app-sidenav></app-sidenav>
+  <div class="content">
+   <!-- Your main content goes here -->
+   <router-outlet class="w-100 d-flex flex-column"></router-outlet>
+  </div>
 </div>
 
- <div class="content">
-  <!-- Your main content goes here -->
-  <router-outlet></router-outlet>
-</div>
 </div>

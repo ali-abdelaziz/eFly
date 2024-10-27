@@ -1,6 +1,7 @@
 {
   "common": {
-    "welcome": "Welcome to eFly"
+    "welcome": "Welcome",
+    "addNew": "Add New"
   },
   "login": {
     "username": "Username",
@@ -19,6 +20,30 @@
   },
   "EmptyState": {
     "needNormalUser": "Please login with a normal user account!",
-    "toEnjoyShopping": "to enjoy your shopping experience."
+    "toEnjoyShopping": "to enjoy your shopping experience.",
+    "navigateToAdminDashboard": "Or you can navigate to admin dashboard!",
+    "adminDashboard": "Admin Dashboard"
+  },
+  "platform": {
+    "products": {
+      "arrangementsBy": "Arrangements By: ",
+      "price": "Price",
+      "lowToHigh": "Low to High",
+      "highToLow": "High to Low",
+      "code": "Code",
+      "egp": "EGP"
+    },
+    "categories": {
+      "categories": "Categories",
+      "all": "All"
+    },
+    "clearFilter": "Clear Filter"
+  },
+  "header": {
+    "search": "Search",
+    "logout": "Logout",
+    "home": "Home",
+    "cart": "Cart",
+    "notifications": "Notifications"
   }
 }

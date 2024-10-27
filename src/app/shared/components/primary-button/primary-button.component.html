@@ -1,0 +1,14 @@
+<button
+  class="primary-button d-flex align-items-center justify-content-center w-100"
+  [ngClass]="hasDropdown ? 'disbale-end-border' : ''"
+  (click)="click()"
+  [disabled]="isDisabled || isLoading"
+>
+  <div class="d-flex align-items-center justify-content-center gap-3">
+    <img [src]="prefixIcon" alt="" *ngIf="prefixIcon != ''" />
+    <span class="label-regular">{{ label | translate }}</span>
+    <img [src]="suffixIcon" alt="" *ngIf="suffixIcon != ''" />
+
+    <!-- <mat-spinner [diameter]="18" *ngIf="isLoading"></mat-spinner> -->
+  </div>
+</button>

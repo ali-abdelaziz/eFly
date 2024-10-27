@@ -1,6 +1,7 @@
 /* Your global styles.scss or a component-specific SCSS file */
 :host {
-  .container {
+  .content-container {
+    // max-width: 250px;
     display: flex;
     flex-direction: column; /* Arrange children vertically */
     height: 100vh;
@@ -20,29 +21,23 @@
   }
 
   .app-sidenav {
-    flex: 0 0 250px; /* Fixed width for the sidebar */
+    flex: 0 0 200px; /* Fixed width for the sidebar */
     background-color: #333;
     color: white;
     padding: 20px;
   }
 
   .content {
-    // position: fixed;
+    width: 83%;
+    padding: 1rem;
+    flex: 1;
+    position: absolute;
+    left: 200px;
+    right: 200px !important;
     top: 80px; /* Adjust this value to match the height of your header */
-    /* Adjust this value to match the width of your sidebar */
-    right: 0;
     bottom: 0;
-
-    overflow-y: auto;
+    // overflow-y: auto;
     z-index: 999; /* Ensure the content is above the sidebar */
-  }
-
-
-
-  .content {
-    // flex: 1;
-    // position: absolute;
-    // left: 250px;
     // padding: 20px;
     // overflow-y: auto;
     // margin-left: 250px;
@@ -74,28 +69,8 @@
 
     // rtl styles
     [dir="rtl"] {
-      .app-sidenav {
-          text-align: start;
-          right: 0 !important;
-        }
         .content {
           right: unset !important;
-          position: absolute;
-          left: 250px !important;
         }
     }
-
-      // ltr styles
-  [dir="ltr"] {
-    .app-sidenav {
-      text-align: start;
-      left: 0;
-    }
-  }
-  .content {
-    flex: 1;
-    position: absolute !important;
-    right: 250px !important;
-  }
-
 }

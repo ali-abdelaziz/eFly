@@ -1,0 +1,13 @@
+<div class="search align-items-center justify-content-start">
+  <form [formGroup]="searchForm" style="width: 100%">
+    <div class="form-floating ">
+      <input type="text" class="form-control" id="floatingInput" placeholder="" formControlName="filter" #listFilter>
+      <label class="" for="floatingInput">
+        <span>
+          <img src="assets/images/icons/search-normal.svg" alt="" srcset="" />
+          {{"header.search" | translate}}
+        </span>
+      </label>
+    </div>
+  </form>
+</div>

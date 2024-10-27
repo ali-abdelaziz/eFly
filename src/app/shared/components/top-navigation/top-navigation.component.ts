@@ -6,13 +6,15 @@ import { RolesService } from '../../../auth/services/roles.service';
 import { roleEnum } from '../../roles/role.enum';
 import { LocalstorageService } from '../../../auth/services/localstorage.service';
 import { LanguageService } from '../../../services/language.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SearchProductsService } from '../../../services/search-products.service';
+import { SearchInputComponent } from "../search-input/search-input.component";
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-top-navigation',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, TranslateModule, SearchInputComponent],
   templateUrl: './top-navigation.component.html',
   styleUrl: './top-navigation.component.scss'
 })
@@ -23,6 +25,7 @@ export class TopNavigationComponent implements OnInit {
   searchForm;
   userData: any;
   roleEnum = roleEnum;
+  searchTerm: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +35,7 @@ export class TopNavigationComponent implements OnInit {
     private languageService: LanguageService,
     public translate: TranslateService,
     private searchProductsService: SearchProductsService,
+    private productsService: ProductsService,
   ) {
     this.choosenLang = this.languageService.Lang$;
     this.dir = this.languageService.dir$;
@@ -41,11 +45,11 @@ export class TopNavigationComponent implements OnInit {
     this.userData = this.authService.userLoginData;
   }
   ngOnInit(): void {
-    this.searchForm.valueChanges.subscribe((data) => {
-      if (data.search !== null && data.search !== undefined) {
-        this.searchProductsService.searchProducts.set(data.search);
-      }
-    });
+    // this.searchForm.valueChanges.subscribe((data) => {
+    //   if (data.search !== null && data.search !== undefined) {
+    //     this.searchProductsService.searchProducts.set(data.search);
+    //   }
+    // });
     this.languageService.setLanguage();
   }
 
@@ -82,6 +86,12 @@ export class TopNavigationComponent implements OnInit {
         })
       );
     }
+  }
+
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.productsService.search.next(this.searchTerm);
   }
 
   searchProducts(value: string) {

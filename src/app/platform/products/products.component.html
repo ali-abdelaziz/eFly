@@ -7,30 +7,30 @@
   <div class="row h-100 py-5 ">
     <!-- Arrangements Sidebar -->
     <div class="col-lg-3 height">
-      <h5 class="card-title mb-1 primary-color fw-bold">Arrangements by: </h5>
+      <h5 class="card-title mb-1 primary-color fw-bold">{{"platform.products.arrangementsBy" | translate}}</h5>
       <div class="accordion" id="accordionExample">
         <!-- Arrangements by -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            <button class="accordion-button price-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
               aria-expanded="true" aria-controls="collapseOne">
-              Price
+              <span>{{"platform.products.price" | translate}}</span>
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="">
-                <div class="form-check" (change)="sortByPrice()">
+                <div class="form-check d-flex" (change)="sortByPrice()">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="lowToHigh" value="low" [(ngModel)]="sort">
                   <label class="form-check-label primary-color" for="lowToHigh">
-                    Low to high
+                    {{"platform.products.lowToHigh" | translate}}
                   </label>
                 </div>
-                <div class="form-check" (change)="sortByPrice()">
+                <div class="form-check d-flex" (change)="sortByPrice()">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="highToLow" value="high" [(ngModel)]="sort">
                   <label class="form-check-label primary-color" for="highToLow">
-                    High to low
+                    {{"platform.products.highToLow" | translate}}
                   </label>
                 </div>
               </div>
@@ -40,23 +40,23 @@
         <!-- Categories -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button categories-accordion collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Categories
+              <span>{{"platform.categories.categories" | translate}}</span>
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="">
-                <div class="form-check" (click)="this.getAllProducts()">
+                <div class="form-check d-flex" (click)="this.getAllProducts()">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="allCategories">
-                  <label class="form-check-label primary-color" for="allCategories">
-                    All
+                  <label class="form-check-label text-start primary-color" for="allCategories">
+                    {{"platform.categories.all" | translate}}
                   </label>
                 </div>
                 @for (category of Categories; track $index) {
-                <div class="form-check" (click)="this.getProductsByCategory(category)">
+                <div class="form-check d-flex" (click)="this.getProductsByCategory(category)">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="category">
                   <label class="form-check-label primary-color" for="category">
                     {{category | titlecase}}
@@ -68,7 +68,7 @@
           </div>
         </div>
         <!-- Brands -->
-        <div class="accordion-item">
+        <!-- <div class="accordion-item">
           <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -79,13 +79,13 @@
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="">
-                <div class="form-check">
+                <div class="form-check d-flex">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="brand1">
                   <label class="form-check-label primary-color" for="brand1">
                     Brand 1
                   </label>
                 </div>
-                <div class="form-check">
+                <div class="form-check d-flex">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="brand2">
                   <label class="form-check-label primary-color" for="brand2">
                     Brand 2
@@ -94,9 +94,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+        <!-- Clear Filter -->
         <div class="text-center">
-          <button (click)="clearFilter()" class="btn btn-primary primary-btn white mt-4 w-75 rounded-4">Clear Filter</button>
+          <button (click)="clearFilter()" class="btn btn-primary primary-btn white mt-2 w-75 rounded-4">{{"platform.clearFilter" | translate}}</button>
         </div>
       </div>
     </div>
@@ -110,7 +111,7 @@
           <div class="item d-flex justify-content-center align-items-center">
             <img [src]="'assets/images/icons/element-3.svg'" alt="all" srcset="">
           </div>
-          <span style="text-align: center;">All</span>
+          <span style="text-align: center;">{{"platform.categories.all" | translate}}</span>
         </div>
 
         @for (category of Categories; track $index) {
@@ -126,9 +127,9 @@
     </div>
 
     <!-- Products -->
-    <div class="w-100 product-grid m-auto mt-3 align-items-start gap-4">
+    <div class="w-100 product-grid m-auto mt-2 align-items-start gap-4">
       <!-- Product Card -->
-      @for (product of productsByCategory; track $index) {
+      @for (product of productsByCategory | filter: searchKey: 'title'; track $index) {
       <div class="product-container transition">
         <div class="product-img-container w-100 ">
           <img src="{{product.image}}" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
@@ -139,9 +140,9 @@
         <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
           <p class="category">{{product.category | titlecase}}</p>
           <p class="name">{{product.title | truncate: 30}}</p>
-          <p class="code">Code: #{{product.id}}</p>
-          <div class="d-flex gap-2 ">
-            <p class="price">{{product.price}} EGP</p>
+          <p class="code">{{"platform.products.code" | translate}}: #{{product.id}}</p>
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <p class="price">{{product.price}} {{"platform.products.egp" | translate}}</p>
             <div class="addCard-button" role="button">
               <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
             </div>
@@ -152,9 +153,11 @@
     </div>
   </div>
 </div>
-<!-- Empty Platform for Admin Users -->
+<!-- Empty State for Admin Users -->
 } @else {<div class="empty-state d-flex flex-column justify-content-center align-items-center mt-5">  <img src="assets/images/img/not-found search.png" class="img" alt="" srcset="">
   <span class="description primary-color fs-3 fw-bold">{{"EmptyState.needNormalUser" | translate}}</span>
   <span class="description primary fs-6 fw-bold">{{"EmptyState.toEnjoyShopping" | translate}}</span>
+  <span class="description primary-color fs-4 fw-bold">{{"EmptyState.navigateToAdminDashboard" | translate}}</span>
+  <button routerLink="/products-dashboard" class="btn btn-primary primary-btn white mt-2 py-2 px-4 rounded-4">{{"EmptyState.adminDashboard" | translate}}</button>
 </div>
 }

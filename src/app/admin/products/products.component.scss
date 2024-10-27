@@ -1,0 +1,114 @@
+:host {
+  .product-table {
+    display: grid;
+    grid-template-columns: 28% repeat(5, 12%);
+    grid-gap: 10px;
+    margin-top: 20px;
+    border: 1px solid #EEEEEE;
+    padding: 15px;
+    border-radius: 6px;
+    transform: translateY(0px);
+    transition: all .4s ease-in-out;
+    overflow: hidden;
+  }
+
+  .product-table:hover {
+    transform: translateY(-8px);
+    cursor: pointer;
+    border: 1px solid var(--primary);
+  }
+
+  .actions {
+    background-color: var(--primary);
+    border-radius: 6px;
+    color: var(--secondary);
+    max-width: 70px;
+    max-height: 40px;
+
+    &:hover {
+      transform: translateY(-3px);
+      transition: all .3s ease-in-out;
+    }
+
+  }
+
+  .font {
+    font-size: 12px;
+    color: #EEEEEE;
+    vertical-align: middle;
+  }
+
+  .button {
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--primary);
+
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-column-gap: 15px;
+  }
+
+  .primary-bg {
+    background-color: var(--primary);
+  }
+
+  .secondary-bg {
+    background-color: #ffffff;
+  }
+
+  .button:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+  }
+
+  .dropdown {
+    .dropdown-toggle {
+      // border: none;
+      // outline: none;
+      // display: flex;
+      // align-items: center;
+      // gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    ul {
+      position: relative !important;
+      transform: unset !important;
+      border: none;
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+      width: 1.5rem;
+      padding: 0px;
+
+      li {
+        padding: 0 !important;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          // background-color: #ebe4ff !important;
+          color: #000 !important;
+        }
+      }
+
+      .active {
+        // background-color: #ebe4ff !important;
+      }
+    }
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+  }
+}

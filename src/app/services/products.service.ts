@@ -2,6 +2,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../models/product.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ export class ProductsService {
   api = environment.api + 'products'
   products$: WritableSignal<Product[]> = signal<Product[]>([]);
   categories$: WritableSignal<string[]> = signal<string[]>([]);
+  search = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(search = '', isAdmin: boolean = false) {
+  getAllProducts(search = '') {
     let params = new HttpParams()
     if (search) params = params.append('search', search)
 

@@ -1,24 +1,49 @@
 {
- "common": {
-  "welcome": "مرحبا"
- },
- "login": {
-  "username": "اسم المستخدم",
-  "password": "كلمة المرور",
-  "role": "الدور",
-  "keepLogin": "تذكرني",
-  "welcomeBack": "مرحبا بعودتك",
-  "toEnjoyShopping": "قم بتسجيل الدخول للاستمتاع بمنتجاتنا",
-  "login": "تسجيل الدخول"
- },
-"snackbar": {
-  "validateyourformdata": "يرجى اكمال البيانات المطلوبة",
-  "createdSuccessfully": "تم الانشاء بنجاح",
-  "updatedSuccessfully": "تم التعديل بنجاح",
-  "deletedSuccessfully": "تم الحذف بنجاح"
-},
-"EmptyState": {
-  "needNormalUser": "يرجي تسجيل الدخول كمستخدم عادي للمتابعة",
-  "toEnjoyShopping": "للاستمتاع بتجربة تسوق المنتجات"
-}
+  "common": {
+    "welcome": "مرحبا",
+    "addNew": "اضافة جديد"
+  },
+  "login": {
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "role": "الدور",
+    "keepLogin": "تذكرني",
+    "welcomeBack": "مرحبا بعودتك",
+    "toEnjoyShopping": "قم بتسجيل الدخول للاستمتاع بمنتجاتنا",
+    "login": "تسجيل الدخول"
+  },
+  "snackbar": {
+    "validateyourformdata": "يرجى اكمال البيانات المطلوبة",
+    "createdSuccessfully": "تم الانشاء بنجاح",
+    "updatedSuccessfully": "تم التعديل بنجاح",
+    "deletedSuccessfully": "تم الحذف بنجاح"
+  },
+  "EmptyState": {
+    "needNormalUser": "يرجي تسجيل الدخول كمستخدم عادي للمتابعة",
+    "toEnjoyShopping": "للاستمتاع بتجربة تسوق المنتجات.",
+    "navigateToAdminDashboard": "أو قم بالانتقال الي لوحة التحكم!",
+    "adminDashboard": "لوحة التحكم"
+  },
+  "platform": {
+    "products": {
+      "arrangementsBy": "البحث حسب: ",
+      "price": "السعر",
+      "lowToHigh": "من الأقل الى الأعلى",
+      "highToLow": "من الأعلى الى الأقل",
+      "code": "الكود",
+      "egp": "جنية"
+    },
+    "categories": {
+      "categories": "الفئات",
+      "all": "الكل"
+    },
+    "clearFilter": "مسح التصنيف"
+  },
+  "header": {
+    "search": "البحث",
+    "logout": "تسجيل الخروج",
+    "home": "الرئيسية",
+    "cart": "عربة التسوق",
+    "notifications": "الاشعارات"
+  }
 }

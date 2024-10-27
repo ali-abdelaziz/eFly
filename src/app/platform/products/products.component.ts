@@ -10,11 +10,12 @@ import { roleEnum } from '../../shared/roles/role.enum';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [TopNavigationComponent, CommonModule, SharedModule, TranslateModule, FormsModule],
+  imports: [TopNavigationComponent, CommonModule, SharedModule, TranslateModule, FormsModule, RouterModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -26,24 +27,28 @@ export class ProductsComponent implements OnInit {
   sort!: string;
   defaultProduct : BehaviorSubject<any> = new BehaviorSubject('electronics');
   productsByCategory: Product[] = [];
+  searchKey:string = "";
 
   constructor(
     private productsService: ProductsService,
     public productsSearchService: SearchProductsService,
     public rolesService: RolesService,
   ) {
-    effect(() => {
-      // console.log('test changes', productsSearchService.searchProducts());
-      if (this.productsSearchService.searchProducts() !== '') {
-        this.getAllProducts(this.productsSearchService.searchProducts())
-      } else {
-        // this.getAllProducts()
-      }
-    });
+    // effect(() => {
+    //   // console.log('test changes', productsSearchService.searchProducts());
+    //   if (this.productsSearchService.searchProducts() !== '') {
+    //     this.getAllProducts(this.productsSearchService.searchProducts())
+    //   } else {
+    //     // this.getAllProducts()
+    //   }
+    // });
   }
   ngOnInit(): void {
     this.getAllProducts()
     this.getCategories()
+    this.productsService.search.subscribe((val: any) => {
+      this.searchKey = val;
+    });
   }
 
   getAllProducts(search = '') {
@@ -83,6 +88,8 @@ export class ProductsComponent implements OnInit {
   }
     // Clear filter data
     clearFilter() {
+      // reset search input value
+      this.searchKey = "";
       this.category = "";
       this.sort = "";
       this.getAllProducts();
