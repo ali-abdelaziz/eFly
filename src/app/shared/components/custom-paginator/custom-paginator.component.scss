@@ -1,0 +1,57 @@
+.custom-paginator{
+  // width: 100%;
+  height: 3.625rem;
+  padding: 0rem 1rem;
+  gap: 2.125rem;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: var(--border-radius-2);
+}
+
+:host{
+  // Mat select style
+  select {
+    border: none;
+      border-bottom: 0.0625rem solid var(--grey-600);
+      width: 3.5rem;
+      overflow: hidden;
+      color: var(--primary);
+  }
+
+  // Selected value style
+  ::ng-deep .mat-mdc-select-value{
+      color: var(--primary) !important;
+  }
+}
+
+// hide checkmark from selected option
+::ng-deep mat-pseudo-checkbox{
+  display: none !important;
+}
+
+.pagination-btns{
+  border: none;
+  background: transparent;
+}
+
+
+// .rows-select{
+//     border: none;
+//     outline: none;
+//     border-bottom: 0.0625rem solid var(--grey-600);
+// }
+
+// Large Screens
+@media (min-width: 992px) and (max-width: 1500px) {
+
+}
+// Medium Screens
+@media (min-width: 576px) and (max-width: 992px) {
+
+}
+// Small Screens
+@media (max-width: 576px) {
+  .custom-paginator{
+      height: 100%;
+  }
+}

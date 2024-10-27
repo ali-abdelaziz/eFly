@@ -11,9 +11,9 @@
   </div>
 
   <!-- Table -->
-  <ng-container *ngIf="products.length > 0">
+  <ng-container *ngIf="this.productsService.products$().length > 0">
     <div class="w-100 product-table table-responsive overflow-auto align-items-start gap-2 mx-3"
-      *ngFor="let product of products">
+      *ngFor="let product of this.productsService.products$()">
       <div class="d-flex justify-content-start align-items-center fw-bold primary-color h-100">
         {{product.title | titlecase | truncate: 20}}
       </div>
@@ -40,6 +40,10 @@
         </ul>
       </div>
     </div>
+    <!-- <app-custom-paginator [length]="pagenator$.getValue().length" [pageIndex]="pagenator$.getValue().pageIndex"
+    [pageSize]="pagenator$.getValue().pageSize" [totalPages]="pagenator$.getValue().totalPages"
+    [pageSizeOptions]="pagenator$.getValue().pageSizeOptions" (page)="pagenateChange($event)">
+  </app-custom-paginator> -->
   </ng-container>
 
 </div>

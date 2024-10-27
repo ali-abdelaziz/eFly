@@ -14,10 +14,10 @@ export class PagenatorService {
   pagenator$ = new BehaviorSubject<Pagenator>({
     length: 1,
     pageIndex: 0,
-    pageSize: 12,
+    pageSize: 5,
     previousPageIndex: 0,
     totalPages: 0,
-    pageSizeOptions: [12, 20, 28, 36],
+    pageSizeOptions: [5, 10, 15, 20],
   });
 
   constructor() { }

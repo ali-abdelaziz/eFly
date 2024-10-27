@@ -11,13 +11,16 @@ export class ProductsService {
   api = environment.api + 'products'
   products$: WritableSignal<Product[]> = signal<Product[]>([]);
   categories$: WritableSignal<string[]> = signal<string[]>([]);
+  allProducts$ = new BehaviorSubject<Product[]>([])
   search = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(search = '') {
-    let params = new HttpParams()
-    if (search) params = params.append('search', search)
+  getAllProducts(page = 1, limit = 5, search = '') {
+    let params = new HttpParams();
+    if (page) params = params.append('page', page);
+    if (limit) params = params.append('limit', limit);
+    if (search) params = params.append('search', search);
 
     return this.http.get<Product[]>(this.api, { params })
   }

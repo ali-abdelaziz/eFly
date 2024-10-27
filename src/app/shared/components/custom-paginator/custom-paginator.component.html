@@ -1,0 +1,34 @@
+<div class="custom-paginator d-flex flex-wrap justify-content-end">
+  <div class="d-flex align-items-center gap-4">
+      <span class="caption-regular mt-2">{{'common.rowsPerPage'|translate}}</span>
+      <select [value]="paginator$.getValue().pageSize">
+          <option *ngFor="let item of pageSizeOptions" (click)="rowsChange(item)" [value]="item">{{item}}</option>
+      </select>
+  </div>
+  <div class="d-flex align-items-center gap-4">
+      <button class="pagination-btns mt-2" [disabled]="pageIndex==0" (click)="pageChange(false)">
+          <ng-container *ngIf="dir$.getValue()=='rtl'">
+              <i class="fas fa-chevron-right" [ngClass]=" pageIndex==0 ? 'grey-300' : 'grey-600'"></i>
+          </ng-container>
+          <ng-container *ngIf="dir$.getValue()=='ltr'">
+              <i class="fas fa-chevron-left" [ngClass]=" pageIndex==0 ? 'grey-300' : 'grey-600'"></i>
+          </ng-container>
+      </button>
+      <div class="d-flex align-items-center gap-2">
+          <select [value]="paginator$.getValue().pageIndex+1">
+              <option *ngFor="let item of pagesList" (click)="goToPage(item)" [value]="item">{{item}}</option>
+          </select>
+          <span class="caption-regular mt-2">{{'common.of'|translate}} {{paginator$.getValue().totalPages}}</span>
+      </div>
+      <button class="pagination-btns mt-2" [disabled]="pageIndex==totalPages-1" (click)="pageChange(true)">
+          <ng-container *ngIf="dir$.getValue()=='rtl'">
+              <i class="fas fa-chevron-left" [ngClass]=" pageIndex==totalPages-1 ? 'grey-300' : 'grey-600'"></i>
+          </ng-container>
+
+          <ng-container *ngIf="dir$.getValue()=='ltr'">
+              <i class="fas fa-chevron-right" [ngClass]=" pageIndex==totalPages-1 ? 'grey-300' : 'grey-600'"></i>
+          </ng-container>
+      </button>
+
+  </div>
+</div>

@@ -90,7 +90,7 @@ export class TopNavigationComponent implements OnInit {
 
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
+    // console.log(this.searchTerm);
     this.productsService.search.next(this.searchTerm);
   }
 

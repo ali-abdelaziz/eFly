@@ -1,7 +1,9 @@
 {
   "common": {
     "welcome": "مرحبا",
-    "addNew": "اضافة جديد"
+    "addNew": "اضافة جديد",
+    "rowsPerPage": "عدد العناصر فى الصفحة",
+    "of": "من"
   },
   "login": {
     "username": "اسم المستخدم",

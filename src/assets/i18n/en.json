@@ -1,7 +1,9 @@
 {
   "common": {
     "welcome": "Welcome",
-    "addNew": "Add New"
+    "addNew": "Add New",
+    "rowsPerPage": "Rows per page",
+    "of": "Of"
   },
   "login": {
     "username": "Username",

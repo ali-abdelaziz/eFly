@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PagenatorService } from '../../shared/services/pagenator.service';
 
 @Component({
   selector: 'app-products',
@@ -28,12 +29,16 @@ export class ProductsComponent implements OnInit {
   defaultProduct : BehaviorSubject<any> = new BehaviorSubject('electronics');
   productsByCategory: Product[] = [];
   searchKey:string = "";
+  filterValue = "";
+  pagenator$: any;
 
   constructor(
     private productsService: ProductsService,
     public productsSearchService: SearchProductsService,
     public rolesService: RolesService,
+    private pagenatorService: PagenatorService
   ) {
+    this.pagenator$ = this.pagenatorService.pagenator$;
     // effect(() => {
     //   // console.log('test changes', productsSearchService.searchProducts());
     //   if (this.productsSearchService.searchProducts() !== '') {
@@ -44,15 +49,15 @@ export class ProductsComponent implements OnInit {
     // });
   }
   ngOnInit(): void {
-    this.getAllProducts()
+    this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
     this.getCategories()
     this.productsService.search.subscribe((val: any) => {
       this.searchKey = val;
     });
   }
 
-  getAllProducts(search = '') {
-    this.productsService.getAllProducts(search).subscribe((data) => {
+  getAllProducts(pageIndex: number, pageSize: number, search: string = '') {
+    this.productsService.getAllProducts(pageIndex, pageSize = 100,search).subscribe((data) => {
       this.productsService.products$.set(data);
       this.products.set(this.productsService.products$());
       this.productsByCategory = data;
@@ -92,7 +97,7 @@ export class ProductsComponent implements OnInit {
       this.searchKey = "";
       this.category = "";
       this.sort = "";
-      this.getAllProducts();
+      this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
     }
 
 }
