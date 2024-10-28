@@ -10,7 +10,11 @@
     "delete": "حذف",
     "addedSuccessfully": "تم الاضافة بنجاح",
     "updatedSuccessfully": "تم التعديل بنجاح",
-    "deletedSuccessfully": "تم الحذف بنجاح"
+    "deletedSuccessfully": "تم الحذف بنجاح",
+    "confirmDelete": "تاكيد الحذف",
+    "areYouSure": "هل انت متأكد؟",
+    "close": "اغلاق",
+    "saveChanges": "حفظ التغييرات"
   },
   "login": {
     "username": "اسم المستخدم",

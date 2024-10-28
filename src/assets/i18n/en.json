@@ -10,7 +10,11 @@
     "delete": "Delete",
     "addedSuccessfully": "Added Successfully",
     "updatedSuccessfully": "Updated Successfully",
-    "deletedSuccessfully": "Deleted Successfully"
+    "deletedSuccessfully": "Deleted Successfully",
+    "confirmDelete": "Confirm Delete",
+    "areYouSure": "Are you sure!?",
+    "close": "Close",
+    "saveChanges": "Save Changes"
   },
   "login": {
     "username": "Username",

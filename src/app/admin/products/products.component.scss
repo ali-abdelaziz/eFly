@@ -114,12 +114,20 @@
   .save-modal {
     position: fixed !important;
     display: flex;
+    // min-width: 400px !important;
     // align-items: center;
     // z-index: 1000 !important;
 
     .modal-header {
       // display: flex !important;
       justify-content: space-between !important;
+      .btn-close {
+        margin: 0 !important;
+      }
+    }
+
+    .modal-body {
+      margin: 7px 100px;
     }
     .modal-footer {
       // display: flex !important;
