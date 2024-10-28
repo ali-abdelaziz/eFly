@@ -111,4 +111,22 @@
       display: none;
     }
   }
+  .save-modal {
+    position: fixed !important;
+    display: flex;
+    // align-items: center;
+    // z-index: 1000 !important;
+
+    .modal-header {
+      // display: flex !important;
+      justify-content: space-between !important;
+    }
+    .modal-footer {
+      // display: flex !important;
+      justify-content: space-between !important;
+    }
+  }
+  .fade:not(.show) {
+    opacity: 1;
+}
 }

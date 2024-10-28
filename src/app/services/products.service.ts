@@ -44,4 +44,8 @@ export class ProductsService {
   updateProduct(id: string, product: Product) {
     return this.http.put(this.api + '/' + id, product);
   }
+
+  deleteProduct(id: string) {
+    return this.http.delete(this.api + '/' + id);
+  }
 }

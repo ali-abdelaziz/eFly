@@ -63,7 +63,7 @@ export class AddEditProductComponent implements OnInit {
       description: ['', [Validators.required]],
       price: ['', [Validators.required]],
       category: ['', [Validators.required]],
-      // image: [''],
+      image: ['https://i.pravatar.cc'],
     });
   }
 

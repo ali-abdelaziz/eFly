@@ -8,9 +8,9 @@
     "cancel": "Cancel",
     "update": "Update",
     "delete": "Delete",
-    "addedSuccessfully": "Added successfully",
-    "updatedSuccessfully": "Updated successfully",
-    "deletedSuccessfully": "Deleted successfully"
+    "addedSuccessfully": "Added Successfully",
+    "updatedSuccessfully": "Updated Successfully",
+    "deletedSuccessfully": "Deleted Successfully"
   },
   "login": {
     "username": "Username",
