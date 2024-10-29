@@ -7,6 +7,7 @@ import { SnackBarService } from '../services/snackBar.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { error } from 'console';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private snackbarService: SnackBarService
+    private snackbarService: SnackBarService,
+    private spinnerService: NgxSpinnerService
   ) { }
   ngOnInit(): void {
     this.buildForm();
@@ -44,9 +46,11 @@ export class LoginComponent implements OnInit {
       this.snackbarService.warningSnackBar('snackbar.validateyourformdata');
       return;
     }
+    this.spinnerService.show();
     this.authService
     .login(this.loginForm.value.username, this.loginForm.value.password)
     .subscribe((res) => {
+      this.spinnerService.hide();
     console.log("loginForm:", this.loginForm.value);
     }, error => {
       if (error.status === 401) {
