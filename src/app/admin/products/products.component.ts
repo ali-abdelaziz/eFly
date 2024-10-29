@@ -11,6 +11,7 @@ import { PagenatorService } from '../../shared/services/pagenator.service';
 import { CustomPaginatorComponent } from '../../shared/components/custom-paginator/custom-paginator.component';
 import { Product } from '../../models/product.model';
 import { SnackBarService } from '../../auth/services/snackBar.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-products',
@@ -36,6 +37,7 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: SnackBarService,
+    private spinnerService: NgxSpinnerService
   ) {
     this.products = this.productsService.products$;
     this.allProducts = this.productsService.allProducts$;
@@ -44,21 +46,18 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.products$.set([]);
-    this.allProducts.next([]);
+    // this.productsService.products$.set([]);
+    // this.allProducts.next([]);
+    this.getAllProducts(1, this.pagenator$.getValue().limit, this.filterValue);
     this.pagenatorService.resetPagenator();
-    this.getAllProducts(1, this.pagenator$.getValue().limit = 20, this.filterValue);
   }
 
-  getAllProducts(page: number, limit: number, search: string ) {
+  getAllProducts(page: number = 1, limit: number = 5, search: string = '') {
+    this.spinnerService.show();
     this.productsService.getAllProducts(page, limit, search)
     .pipe(
       tap((data: any) => {
-        if (page == 1)
-        // this.products.set([]);
-        // this.products.set(data);
-        this.allProducts.next(data);
-        this.productsService.products$.set([]);
+        // if (page == 1)
         this.productsService.products$.set(data);
         this.products = data;
           this.pagenatorService.updatePagenatorLenth(data.totalDocs)
@@ -68,6 +67,7 @@ export class ProductsComponent implements OnInit {
       takeUntil(this._unsubscribe$),
     )
     .subscribe();
+    this.spinnerService.hide();
   }
   filterInputObservable(input: any) {
     this.filterValue = input;
@@ -82,7 +82,7 @@ export class ProductsComponent implements OnInit {
 
   pagenateChange(event: any) {
     // this.products.set([]);
-    this.allProducts.next([]);
+    // this.allProducts.next([]);
     this.productsService.products$.set([]);
     this.pagenator$.next({
       ...this.pagenator$.getValue(),
@@ -96,22 +96,20 @@ export class ProductsComponent implements OnInit {
   showModal(product: Product) {
     console.log("product",product);
     this.selectedProduct.set(product)
-
-
     this.isModalOpen = !this.isModalOpen;
   }
 
   onDeleteProduct(id: any) {
     this.showModal(id);
+    this.spinnerService.show();
     this.productsService.deleteProduct(id)
     .subscribe();
     this.isModalOpen = false;
     this.snackBar.simpleSnackBar('common.deletedSuccessfully');
     this.selectedProduct.set({} as Product);
-    this.productsService.products$.set([]);
-    this.allProducts.next([]);
-    this.getAllProducts(1, this.pagenator$.getValue().limit = 20, this.filterValue);
-    this.router.navigate(['/admin/products']);
+    // remove product from the list
+    this.productsService.products$.update(products => products.filter((product: Product) => product.id != id));
+    this.spinnerService.hide();
   }
 
   ngOnDestroy(): void {

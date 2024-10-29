@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SnackBarService } from '../../../auth/services/snackBar.service';
 import { finalize, tap } from 'rxjs';
 import { HelperService } from '../../../shared/services/helper.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Product } from '../../../models/product.model';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -31,7 +33,8 @@ export class AddEditProductComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private snackBar: SnackBarService,
-    public helper: HelperService
+    public helper: HelperService,
+    private spinnerService: NgxSpinnerService
   ) {
     this._id = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -47,6 +50,7 @@ export class AddEditProductComponent implements OnInit {
   }
 
   getProductById(id: string) {
+    this.spinnerService.show();
     this.productsService
       .getProductById(id)
       .pipe(
@@ -55,6 +59,7 @@ export class AddEditProductComponent implements OnInit {
         })
       )
       .subscribe();
+    this.spinnerService.hide();
   }
 
   buildForm() {
@@ -75,32 +80,49 @@ export class AddEditProductComponent implements OnInit {
     this.isLoading = true;
     // handel add mode
     if (this.addMode) {
+      // handel add mode
+      this.spinnerService.show();
       this.productsService
         .AddProduct(this.productForm.value)
         .pipe(
-          tap((res) => {
+          tap((res: any) => {
             this.snackBar.simpleSnackBar('common.addedSuccessfully');
             this.productForm.reset();
             this.productForm.updateValueAndValidity();
             this.helper.previousPage();
+            // update product list
+            this.productsService.products$.update((products) => [res, ...products]);
           }),
           finalize(() => (this.isLoading = false))
         )
         .subscribe();
+        this.spinnerService.hide();
       // handel edit mode
     } else {
+      this.spinnerService.show();
       this.productsService
         .updateProduct(this._id, this.productForm.value)
         .pipe(
-          tap((res) => {
+          tap((res: any) => {
             this.snackBar.simpleSnackBar('common.updatedSuccessfully');
             this.productForm.reset();
             this.productForm.updateValueAndValidity();
             this.helper.previousPage();
+            // update product list
+            this.productsService.products$.update((products) => {
+              return products.map((product) => {
+                if (product.id == this._id) {
+                  return res;
+                }
+                return product;
+              });
+            }
+            );
           }),
           finalize(() => (this.isLoading = false))
         )
         .subscribe();
+        this.spinnerService.hide();
     }
   }
 }

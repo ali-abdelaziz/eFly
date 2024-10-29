@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PagenatorService } from '../../shared/services/pagenator.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-products',
@@ -36,7 +37,8 @@ export class ProductsComponent implements OnInit {
     private productsService: ProductsService,
     public productsSearchService: SearchProductsService,
     public rolesService: RolesService,
-    private pagenatorService: PagenatorService
+    private pagenatorService: PagenatorService,
+    private spinnerService: NgxSpinnerService
   ) {
     this.pagenator$ = this.pagenatorService.pagenator$;
     // effect(() => {
@@ -57,24 +59,30 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts(pageIndex: number, pageSize: number, search: string = '') {
+    this.spinnerService.show();
     this.productsService.getAllProducts(pageIndex, pageSize = 100,search).subscribe((data) => {
       this.productsService.products$.set(data);
       this.products.set(this.productsService.products$());
       this.productsByCategory = data;
     })
+    this.spinnerService.hide();
   }
 
   getCategories() {
+    this.spinnerService.show();
     this.productsService.getCategories().subscribe((data) => {
       this.productsService.categories$.set(data);
       this.Categories = data;
     })
+    this.spinnerService.hide();
   }
 
   getProductsByCategory(category: string) {
+    this.spinnerService.show();
     this.productsService.getProductsByCategory(category).subscribe((data) => {
       this.productsByCategory = data;
     })
+    this.spinnerService.hide();
   }
 
   sortByPrice() {
@@ -93,11 +101,13 @@ export class ProductsComponent implements OnInit {
   }
     // Clear filter data
     clearFilter() {
+      this.spinnerService.show();
       // reset search input value
       this.searchKey = "";
       this.category = "";
       this.sort = "";
       this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
+      this.spinnerService.hide();
     }
 
 }
