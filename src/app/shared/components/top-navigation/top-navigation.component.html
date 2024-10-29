@@ -23,21 +23,13 @@
         </div>
         <!-- Buttons -->
         <div class="d-flex align-items-center gap-3 mt-3 mt-md-0 btns-top-navigation">
-          <div class="circle-btn let" [routerLink]="'/cart'">
+          <div class="circle-btn let">
             <img src="assets/images/icons/bag.svg" alt="">
           </div>
           <div class="circle-btn let">
             <img src="assets/images/icons/notification.svg" alt="">
           </div>
-
-          <!-- <button class="btn btn-primary primary-btn white" (click)="authService.logout()">
-            Logout
-          </button> -->
-
-
-
-          @if(authService.isLogin()){
-
+          <!-- Dropdown Menu -->
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -72,7 +64,6 @@
               </li>
             </ul>
           </div>
-          }
 
           <div class="nav-item" (click)="changeLanguage()">
             {{ dir.getValue() == "rtl" ? "English" : "العربية" }}
