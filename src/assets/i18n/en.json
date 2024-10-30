@@ -14,7 +14,10 @@
     "confirmDelete": "Confirm Delete",
     "areYouSure": "Are you sure!?",
     "close": "Close",
-    "saveChanges": "Save Changes"
+    "saveChanges": "Save Changes",
+    "404Message1": "Sorry, the page you are looking for could not be found!, It might never existed at the current time.",
+    "404Message2": "Please check the URL and try again later.",
+    "goBack": "Go Back"
   },
   "login": {
     "username": "Username",

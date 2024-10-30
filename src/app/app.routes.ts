@@ -19,6 +19,10 @@ export const routes: Routes = [
     loadComponent: () => import('./platform/products/products.component').then(m => m.ProductsComponent)
   },
   {
+    path: 'not-found',
+    loadComponent: () => import('./shared/components/not-found/not-found.component').then(m => m.NotFoundComponent)
+  },
+  {
     path: 'admin',
     data: {
       roles: [roleEnum.admin]
