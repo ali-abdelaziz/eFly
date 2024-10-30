@@ -38,7 +38,8 @@
     "needNormalUser": "Please login with a normal user account!",
     "toEnjoyShopping": "to enjoy your shopping experience.",
     "navigateToAdminDashboard": "Or you can navigate to admin dashboard!",
-    "adminDashboard": "Admin Dashboard"
+    "adminDashboard": "Admin Dashboard",
+    "noProductsFound": "No Products Found!"
   },
   "platform": {
     "products": {

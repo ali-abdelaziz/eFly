@@ -1,0 +1,130 @@
+// .mat-mdc-snack-bar-container {
+//     --mdc-snackbar-container-color: #d4f7e7;
+//     --mat-mdc-snack-bar-button-color: var(--accept);
+//     --mdc-snackbar-supporting-text-color: var(--accept);
+//     .mdc-snackbar__surface {
+//         border-start-end-radius: 12px !important;
+//         border-end-end-radius: 12px !important;
+//         // border-inline-end: 8px solid var(--accept);
+//     }
+//     &.error {
+//         --mdc-snackbar-container-color: #f6d5d8;
+//         --mat-mdc-snack-bar-button-color: var(--warn);
+//         --mdc-snackbar-supporting-text-color: var(--warn);
+//         .mdc-snackbar__surface {
+//             // border-inline-end: 8px solid var(--warn);
+//         }
+//     }
+//     &.warning {
+//         --mdc-snackbar-container-color: #fbe8d0;
+//         --mat-mdc-snack-bar-button-color: var(--popout);
+//         --mdc-snackbar-supporting-text-color: var(--popout);
+//         .mdc-snackbar__surface {
+//             // border-inline-end: 8px solid var(--popout);
+//         }
+//     }
+// }
+// .toast-container .ngx-toastr {
+//     border-radius: 0.8rem;
+// }
+// .toast-success {
+//     background-color: var(--accept);
+// }
+// .toast-error {
+//     background-color: var(--warn);
+// }
+// .toast-warning {
+//     background-color: var(--popout);
+// }
+
+// ********************************************** //
+
+// NEW STYLE to be applied to all snackbar
+.toast-container .ngx-toastr {
+  // border-radius: 0.8rem;
+  border-radius: 4px;
+  padding-bottom: 10px;
+  min-height: 50px;
+}
+
+// Toast Colors
+#toast-container > .toast-success {
+  background-color: var(--green-200);
+  color: var(--green-700) !important;
+  border: 1px solid var(--green-300);
+}
+
+#toast-container > .toast-error {
+  background-color: var(--red-100);
+  color: var(--red-600) !important;
+}
+
+#toast-container > .toast-warning {
+  background-color: var(--yellow-200);
+  color: var(--yellow-900) !important;
+}
+
+#toast-container > .toast-info {
+  background-color: var(--accent-200);
+  color: var(--accent-700) !important;
+}
+
+// Title text
+.toast-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+// Message text
+.toast-message {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.17px;
+}
+
+// ********************************************** //
+
+// Prefix Icons change and close button icon
+#toast-container > .toast-success {
+  background-image: url("../images/icons/snackbar/success.svg");
+  .toast-close-button {
+    background-image: url("../images/icons/snackbar/close-success.svg");
+  }
+}
+
+#toast-container > .toast-error {
+  background-image: url("../images/icons/snackbar/error.svg");
+  .toast-close-button {
+    background-image: url("../images/icons/snackbar/close-error.svg");
+  }
+}
+
+#toast-container > .toast-warning {
+  background-image: url("../images/icons/snackbar/warning.svg");
+  .toast-close-button {
+    background-image: url("../images/icons/snackbar/close-warning.svg");
+  }
+}
+
+#toast-container > .toast-info {
+  background-image: url("../images/icons/snackbar/info.svg");
+  .toast-close-button {
+    background-image: url("../images/icons/snackbar/close-info.svg");
+  }
+}
+
+// Close button general style
+#toast-container > .ngx-toastr > .toast-close-button {
+  width: 30px;
+  height: 25px;
+  top: 0;
+  font-size: 0px !important;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  span {
+    display: none !important;
+  }
+}

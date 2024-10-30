@@ -38,7 +38,8 @@
     "needNormalUser": "يرجي تسجيل الدخول كمستخدم عادي للمتابعة",
     "toEnjoyShopping": "للاستمتاع بتجربة تسوق المنتجات.",
     "navigateToAdminDashboard": "أو قم بالانتقال الي لوحة التحكم!",
-    "adminDashboard": "لوحة التحكم"
+    "adminDashboard": "لوحة التحكم",
+    "noProductsFound": "لم يتم العثور على منتجات!"
   },
   "platform": {
     "products": {

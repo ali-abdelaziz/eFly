@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit {
     console.log("loginForm:", this.loginForm.value);
     }, error => {
       if (error.status === 401) {
+        this.spinnerService.show();
         this.snackbarService.backEndErrorSnackBar('Unauthorized Credentials');
+        this.spinnerService.hide();
         return;
       }
     });
