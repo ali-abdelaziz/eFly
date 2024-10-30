@@ -27,6 +27,8 @@ export class ProductsComponent implements OnInit {
   selectedProduct: WritableSignal<Product> = signal<Product>({} as Product);
   _id: any;
   filterValue = "";
+  searchTerm: string = '';
+  searchKey:string = "";
   pagenator$: any;
   isLoading: boolean = false;
   isModalOpen: boolean = false;
@@ -50,6 +52,9 @@ export class ProductsComponent implements OnInit {
     // this.allProducts.next([]);
     this.getAllProducts(1, this.pagenator$.getValue().limit, this.filterValue);
     this.pagenatorService.resetPagenator();
+    this.productsService.search.subscribe((val: any) => {
+      this.searchKey = val;
+    });
   }
 
   getAllProducts(page: number = 1, limit: number = 5, search: string = '') {
@@ -69,9 +74,15 @@ export class ProductsComponent implements OnInit {
     .subscribe();
     this.spinnerService.hide();
   }
-  filterInputObservable(input: any) {
-    this.filterValue = input;
-    this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
+  // filterInputObservable(input: any) {
+  //   this.filterValue = input;
+  //   this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
+  // }
+
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    // console.log(this.searchTerm);
+    this.productsService.search.next(this.searchTerm);
   }
 
   reStoreProductsAfterSearched() {
