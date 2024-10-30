@@ -2,31 +2,34 @@
   [@fadeInOut]>
   <ul>
     <li>
-      <a routerLinkActive="active" (click)="toggleSubmenu()">
+      <a routerLinkActive="active" (click)="toggleSubmenu()" class="d-flex align-items-center gap-4">
         <span class="menu-item">{{"sidenav.dashboard" | translate}}</span>
+        <i class="fa-solid fa-chevron-down" *ngIf="!isSubmenuOpen"></i>
+        <i class="fa-solid fa-chevron-left" *ngIf="this.choosenLang.getValue() === 'ar' && isSubmenuOpen"></i>
+        <i class="fa-solid fa-chevron-right" *ngIf="this.choosenLang.getValue() === 'en' && isSubmenuOpen"></i>
         <!-- <span class="sub-menu-item" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }"></span> -->
       </a>
       <!-- Sub-menu for Dashboard with left padding -->
       <ul *ngIf="isSubmenuOpen" class="sub-menu">
         <li>
-          <a  routerLinkActive="active">
-            <span class="menu-item">{{"sidenav.customers" | translate}}</span>
+          <a routerLink="/not-found" routerLinkActive="active">
+            <span class="menu-item fs-6">{{"sidenav.customers" | translate}}</span>
           </a>
         </li>
         <li>
-          <a  routerLinkActive="active">
-            <span class="menu-item">{{"sidenav.carts" | translate}}</span>
+          <a routerLink="/not-found" routerLinkActive="active">
+            <span class="menu-item fs-6">{{"sidenav.carts" | translate}}</span>
           </a>
         </li>
       </ul>
     </li>
     <li>
-      <a  routerLinkActive="active">
+      <a routerLink="/not-found" routerLinkActive="active">
         <span class="menu-item">{{"sidenav.categories" | translate}}</span>
       </a>
     </li>
     <li>
-      <a routerLink="/admin/products" >
+      <a routerLink="/admin/products" routerLinkActive="active">
         <span class="menu-item">{{"sidenav.products" | translate}}</span>
       </a>
     </li>
