@@ -12,13 +12,11 @@ export class RolesService {
   ) {}
 
   getRole() {
-    // return (<User | null>(
-    //   JSON.parse(this.localStorgeService.getItem('user') as string)
-    // ))?.role;
+    // return (<User | null>(JSON.parse(this.localStorgeService.getItem('user') as string)))?.role;
 
     // handle user role to be static
     // return ['user'];
-    return ['admin'];
+    return 'admin';
   }
 
   isRolesAuthorized(roles: string[]) {

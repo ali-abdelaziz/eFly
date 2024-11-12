@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PagenatorService } from '../../shared/services/pagenator.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SnackBarService } from '../../auth/services/snackBar.service';
 
 @Component({
   selector: 'app-products',
@@ -32,13 +33,15 @@ export class ProductsComponent implements OnInit {
   searchKey:string = "";
   filterValue = "";
   pagenator$: any;
+  isFavorite: boolean = false;
 
   constructor(
     private productsService: ProductsService,
     public productsSearchService: SearchProductsService,
     public rolesService: RolesService,
     private pagenatorService: PagenatorService,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private snackBar: SnackBarService,
   ) {
     this.pagenator$ = this.pagenatorService.pagenator$;
     // effect(() => {
@@ -108,6 +111,17 @@ export class ProductsComponent implements OnInit {
       this.sort = "";
       this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
       this.spinnerService.hide();
+    }
+
+    addToFavorite(product: Product) {
+      this.productsService.products$.update(products => products.map(p => {
+        if (p.id === product.id) {
+          // p.isFavorite = !p.isFavorite;
+          this.isFavorite = !this.isFavorite;
+          this.snackBar.simpleSnackBar('common.commingSoon');
+        }
+        return p;
+      }));
     }
 
 }

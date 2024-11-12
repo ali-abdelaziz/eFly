@@ -220,7 +220,26 @@
       position: relative;
       height: 228px;
       overflow: hidden;
+
+      .fav-btn {
+        position: absolute;
+        transform: translateY(0);
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        background-color: transparent;
+        padding: 2px;
+        border-radius: 5px;
+        transition: all 0.4s ease-in-out;
+      }
+
+      .fav-btn:hover {
+        transform: translateY(-3px);
+        // border: 1px solid var(--primary);
+        cursor: pointer;
+      }
     }
+
   }
 
   .product-details {

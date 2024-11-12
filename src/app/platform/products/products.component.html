@@ -132,10 +132,13 @@
       @for (product of productsByCategory | filter: searchKey: 'title'; track $index) {
       <div class="product-container transition">
         <div class="product-img-container w-100 ">
-          <img src="{{product.image}}" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
-          <div class="addCard-button" role="button">
-            <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset="">
+          <div class="fav-buttons-container">
+            <div class="fav-btn" type="button" (click)="addToFavorite(product)">
+              <img *ngIf="!product.isFavorite" src="assets/images/icons/heart-gray.svg" height="35px" width="35px" alt="" srcset="">
+              <img *ngIf="product.isFavorite" src="assets/images/icons/heart-red.svg" height="35px" width="35px" alt="" srcset="">
+            </div>
           </div>
+          <img src="{{product.image}}" class="object-fit-contain" height="228px" width="300px" alt="" srcset="">
         </div>
         <div class="w-100 product-details d-flex justify-content-center align-items-start flex-column  p-2 ">
           <p class="category">{{product.category | titlecase}}</p>

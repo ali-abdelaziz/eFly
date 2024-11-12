@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
     private spinnerService: NgxSpinnerService
   ) {
     this.products = this.productsService.products$;
-    this.allProducts = this.productsService.allProducts$;
+    // this.allProducts = this.productsService.allProducts$;
     this.pagenator$ = this.pagenatorService.pagenator$;
     this._id = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -57,7 +57,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  getAllProducts(page: number = 1, limit: number = 5, search: string = '') {
+  getAllProducts(page: number = 1, limit: number = 100, search: string = '') {
     this.spinnerService.show();
     this.productsService.getAllProducts(page, limit, search)
     .pipe(

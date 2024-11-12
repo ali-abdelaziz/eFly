@@ -11,7 +11,7 @@ export class ProductsService {
   api = environment.api + 'products'
   products$: WritableSignal<Product[]> = signal<Product[]>([]);
   categories$: WritableSignal<string[]> = signal<string[]>([]);
-  allProducts$ = new BehaviorSubject<Product[]>([])
+  // allProducts$ = new BehaviorSubject<Product[]>([])
   search = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { }
@@ -85,5 +85,9 @@ export class ProductsService {
 
   deleteProduct(id: string) {
     return this.http.delete(this.api + '/' + id);
+  }
+
+  addToFavorite(product: Product) {
+    this.products$.update(products => products.filter((p: Product) => p.id != product.id));
   }
 }
