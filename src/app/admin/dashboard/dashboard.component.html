@@ -4,7 +4,7 @@
 </div>
 <div class="content-container">
   <app-sidenav></app-sidenav>
-  <div class="content">
+  <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
    <!-- Your main content goes here -->
    <router-outlet class="w-100 d-flex flex-column"></router-outlet>
   </div>
