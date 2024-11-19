@@ -3,6 +3,7 @@ import { environment } from '../../environment/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../models/product.model';
 import { BehaviorSubject, tap } from 'rxjs';
+import { LocalstorageService } from '../auth/services/localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class ProductsService {
   // allProducts$ = new BehaviorSubject<Product[]>([])
   search = new BehaviorSubject<string>("");
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStorageService: LocalstorageService) { }
 
   getAllProducts(page = 1, limit = 5, search = '') {
     // caching data in local storage to avoid multiple requests
-    const cachedProducts = localStorage.getItem('products');
+    const cachedProducts = this.localStorageService.getItem('products');
     if (!cachedProducts) {
       console.log('No cached products found. Making a request...');
       let params = new HttpParams();
@@ -28,7 +29,7 @@ export class ProductsService {
       return this.http.get<Product[]>(this.api, { params })
       .pipe(
         tap((products) => {
-          localStorage.setItem('products', JSON.stringify(products));
+          this.localStorageService.setItem('products', JSON.stringify(products));
         })
       )
     } else {
@@ -38,13 +39,13 @@ export class ProductsService {
   }
   getCategories() {
     // caching data in local storage to avoid multiple requests
-    const cachedCategories = localStorage.getItem('categories');
+    const cachedCategories = this.localStorageService.getItem('categories');
     if (!cachedCategories) {
       console.log('No cached categories found. Making a request...');
       return this.http.get<string[]>(this.api + '/categories')
       .pipe(
         tap((categories) => {
-          localStorage.setItem('categories', JSON.stringify(categories));
+          this.localStorageService.setItem('categories', JSON.stringify(categories));
         })
       )
     } else {
@@ -55,13 +56,13 @@ export class ProductsService {
 
   getProductsByCategory(category: string) {
     // caching data in local storage to avoid multiple requests
-    const cachedProductsByCategory = localStorage.getItem(category);
+    const cachedProductsByCategory = this.localStorageService.getItem(category);
     if (!cachedProductsByCategory) {
       console.log('No cached products by category found. Making a request...');
       return this.http.get<Product[]>(this.api + '/category/' + category)
       .pipe(
         tap((products) => {
-          localStorage.setItem(category, JSON.stringify(products));
+          this.localStorageService.setItem(category, JSON.stringify(products));
         })
       )
     } else {
