@@ -114,12 +114,15 @@ export class ProductsComponent implements OnInit {
     this.showModal(id);
     this.spinnerService.show();
     this.productsService.deleteProduct(id)
-    .subscribe();
+    .subscribe(res => {
+      this.productsService.products$.update(products => products.filter((product: Product) => product.id != id));
+      localStorage.removeItem('products');
+      localStorage.setItem('products', JSON.stringify(this.productsService.products$()));
+    })
     this.isModalOpen = false;
     this.snackBar.simpleSnackBar('common.deletedSuccessfully');
     this.selectedProduct.set({} as Product);
-    // remove product from the list
-    this.productsService.products$.update(products => products.filter((product: Product) => product.id != id));
+    // remove product from the list and update local storage
     this.spinnerService.hide();
   }
 

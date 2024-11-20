@@ -14,11 +14,12 @@ import { finalize, tap } from 'rxjs';
 import { HelperService } from '../../../shared/services/helper.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from '../../../models/product.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-product',
   standalone: true,
-  imports: [TranslateModule, SaveCancelButtonComponent, ReactiveFormsModule],
+  imports: [TranslateModule, SaveCancelButtonComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './add-edit-product.component.html',
   styleUrl: './add-edit-product.component.scss',
 })
@@ -27,6 +28,7 @@ export class AddEditProductComponent implements OnInit {
   addMode: boolean = true;
   _id: any;
   productForm!: FormGroup;
+  categories$: any[];
 
   constructor(
     private productsService: ProductsService,
@@ -37,12 +39,14 @@ export class AddEditProductComponent implements OnInit {
     private spinnerService: NgxSpinnerService
   ) {
     this._id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.categories$ = this.productsService.categories$();
   }
   ngOnInit(): void {
     this.buildForm();
     // if (this._id) {
     //   this.getProductById(this._id);
     // }
+    this.getCategories();
     this.addMode = !this._id;
     if (!this.addMode) {
       this.getProductById(this._id);
@@ -65,11 +69,22 @@ export class AddEditProductComponent implements OnInit {
   buildForm() {
     this.productForm = this.fb.group({
       title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      category: ['', [Validators.required]],
+      description: ['', [Validators.required]],
       image: ['https://i.pravatar.cc'],
+      category: ['', [Validators.required]],
     });
+  }
+
+  getCategories() {
+    this.productsService.getCategories().subscribe((data) => {
+      this.productsService.categories$.set(data);
+      this.categories$ = data;
+    })
+  }
+
+  selectCategory(event: any) {
+    this.productForm.get('category')?.setValue(event.target.value);
   }
 
   save() {
@@ -80,7 +95,6 @@ export class AddEditProductComponent implements OnInit {
     this.isLoading = true;
     // handel add mode
     if (this.addMode) {
-      // handel add mode
       this.spinnerService.show();
       this.productsService
         .AddProduct(this.productForm.value)
@@ -91,11 +105,14 @@ export class AddEditProductComponent implements OnInit {
             this.productForm.updateValueAndValidity();
             this.helper.previousPage();
             // update product list
-            this.productsService.products$.update((products) => [res, ...products]);
           }),
           finalize(() => (this.isLoading = false))
         )
-        .subscribe();
+        .subscribe(res => {
+          this.productsService.products$.update((products) => [res, ...products]);
+          // update local storage products and product list
+          localStorage.setItem('products', JSON.stringify(this.productsService.products$()));
+        })
         this.spinnerService.hide();
       // handel edit mode
     } else {
@@ -108,20 +125,15 @@ export class AddEditProductComponent implements OnInit {
             this.productForm.reset();
             this.productForm.updateValueAndValidity();
             this.helper.previousPage();
-            // update product list
-            this.productsService.products$.update((products) => {
-              return products.map((product) => {
-                if (product.id == this._id) {
-                  return res;
-                }
-                return product;
-              });
-            }
-            );
           }),
           finalize(() => (this.isLoading = false))
         )
-        .subscribe();
+        .subscribe(res => {
+          // update local storage products and product list
+          this.productsService.products$.update((products) => [res, ...products]);
+          localStorage.removeItem('products');
+          localStorage.setItem('products', JSON.stringify(this.productsService.products$()));
+        })
         this.spinnerService.hide();
     }
   }
