@@ -21,7 +21,7 @@ import { ProductsService } from '../../../services/products.service';
 export class TopNavigationComponent implements OnInit {
   choosenLang: any;
   dir: any;
-  mobileToggle: boolean = true;
+  mobileToggle: boolean = false;
   searchForm;
   userData: any;
   roleEnum = roleEnum;
