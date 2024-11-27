@@ -105,6 +105,10 @@ export class ProductsComponent implements OnInit {
     // Clear filter data
     clearFilter() {
       this.spinnerService.show();
+      // uncheck all sort checkboxes
+      Array.from(document.getElementsByClassName("form-check-input")).forEach((checkbox) => {
+        (checkbox as HTMLInputElement).checked = false;
+      });
       // reset search input value
       this.searchKey = "";
       this.category = "";
