@@ -33,12 +33,6 @@ export class AuthService {
         this.userLoginData.set(res);
         this.token.set(res.token);
         this.saveLoginResponseToLocalStorage(res);
-        let userRoles = this.userLoginData()?.user?.role;
-        if(userRoles?.includes('admin')) {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/products']);
-        }
       })
     )
   }

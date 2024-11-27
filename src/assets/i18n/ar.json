@@ -33,7 +33,9 @@
     "validateyourformdata": "يرجى اكمال البيانات المطلوبة",
     "createdSuccessfully": "تم الانشاء بنجاح",
     "updatedSuccessfully": "تم التعديل بنجاح",
-    "deletedSuccessfully": "تم الحذف بنجاح"
+    "deletedSuccessfully": "تم الحذف بنجاح",
+    "checkCredentials": "يرجى التحقق من البيانات والمحاولة مرة اخرى.",
+    "unauthorizedCredentials": "بيانات الدخول غير مصرح بها!"
   },
   "EmptyState": {
     "needNormalUser": "يرجي تسجيل الدخول كمستخدم عادي للمتابعة",

@@ -33,7 +33,9 @@
     "validateyourformdata": "Please fill out all required data.",
     "createdSuccessfully": "Created successfully",
     "updatedSuccessfully": "Updated successfully",
-    "deletedSuccessfully": "Deleted successfully"
+    "deletedSuccessfully": "Deleted successfully",
+    "checkCredentials": "Please check your credentials and try again.",
+    "unauthorizedCredentials": "Unauthorized credentials!"
   },
   "EmptyState": {
     "needNormalUser": "Please login with a normal user account!",
