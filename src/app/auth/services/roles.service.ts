@@ -15,8 +15,8 @@ export class RolesService {
     // return (<User | null>(JSON.parse(this.localStorgeService.getItem('user') as string)))?.role;
 
     // handle user role to be static
-    return ['user'];
-    // return 'admin';
+    // return ['user'];
+    return 'admin';
   }
 
   isRolesAuthorized(roles: string[]) {

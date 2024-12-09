@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
 
+# How to Use
+
+You can use the below user credentials to login:
+
+{
+  email: admin, 
+  password: admin
+},
+
+{
+  email: user, 
+  password: user
+}
+
+And you can swith between user and admin view by changing the role in the getRole() in the roles.service.ts file.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
