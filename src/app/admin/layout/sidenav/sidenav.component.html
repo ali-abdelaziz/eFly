@@ -1,37 +1,53 @@
-<div class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }"
-  [@fadeInOut]>
-  <ul>
-    <li>
-      <a routerLinkActive="active" (click)="toggleSubmenu()" class="d-flex align-items-center gap-4">
-        <span class="menu-item">{{"sidenav.dashboard" | translate}}</span>
-        <i class="fa-solid fa-chevron-down" *ngIf="!isSubmenuOpen"></i>
-        <i class="fa-solid fa-chevron-left" *ngIf="this.choosenLang.getValue() === 'ar' && isSubmenuOpen"></i>
-        <i class="fa-solid fa-chevron-right" *ngIf="this.choosenLang.getValue() === 'en' && isSubmenuOpen"></i>
-        <!-- <span class="sub-menu-item" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }"></span> -->
-      </a>
-      <!-- Sub-menu for Dashboard with left padding -->
-      <ul *ngIf="isSubmenuOpen" class="sub-menu">
-        <li>
-          <a routerLink="/not-found" routerLinkActive="active">
-            <span class="menu-item fs-6">{{"sidenav.customers" | translate}}</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/not-found" routerLinkActive="active">
-            <span class="menu-item fs-6">{{"sidenav.carts" | translate}}</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a routerLink="/not-found" routerLinkActive="active">
-        <span class="menu-item">{{"sidenav.categories" | translate}}</span>
-      </a>
-    </li>
-    <li>
-      <a routerLink="/admin/products" routerLinkActive="active">
-        <span class="menu-item">{{"sidenav.products" | translate}}</span>
-      </a>
-    </li>
-  </ul>
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <div class="logo" (click)="toggleCollapse()">
+      <img src="assets/logo/efly-logo.svg" alt="">
+    </div>
+    @if (!isLeftSidebarCollapsed()) {
+    <div class="logo-text">eFly</div>
+    <button class="btn-close" (click)="closeSidenav()">
+      <i class="fal close-icon"></i>
+    </button>
+    }
+  </div>
+  <div class="sidenav-list">
+    <div class="sidenav-nav">
+      @for (item of items; track $index) {
+      <li class="sidenav-nav-item">
+        <a class="sidenav-nav-link" [routerLink]="item.routeLink" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          @if (!isLeftSidebarCollapsed()) {
+          <span class="sidenav-link-text">{{ item.label }}</span>
+          }
+        </a>
+      </li>
+      }
+    </div>
+  </div>
+  <!-- Profile & Logout -->
+  <div class="logout-container d-flex flex-column gap-3">
+    <div class="profile">
+      <div class="profile-image rounded-full bg-transparent d-flex align-items-center justify-content-center">
+        <!-- <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="bg-transparent rounded-full w-6 h-6" /> -->
+        <i class="fa-solid fa-user" style="color: #7f00ff; font-size: 1.5rem"></i>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        @if (!isLeftSidebarCollapsed()) {
+        <span class="profile-name d-flex flex-column gap-1">
+          <span>Ali Mohamed</span>
+          <span>Admin</span>
+        </span>
+        }
+      </div>
+    </div>
+    <div class="logout-button">
+      <div class="d-flex align-items-center" (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket" style="color: red; font-size: 1.5rem"></i>
+        @if (!isLeftSidebarCollapsed()) {
+        <span class="logout-text">Log-out</span>
+        }
+      </div>
+    </div>
+  </div>
 </div>

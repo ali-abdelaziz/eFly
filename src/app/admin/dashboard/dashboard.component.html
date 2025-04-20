@@ -1,13 +1,7 @@
-<div>
-  <div class="app-header" >
-  <app-header></app-header>
-</div>
-<div class="content-container">
-  <app-sidenav></app-sidenav>
-  <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
-   <!-- Your main content goes here -->
-   <router-outlet class="w-100 d-flex flex-column"></router-outlet>
-  </div>
-</div>
+<div class="layout">
+  <app-sidenav [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+    (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)" />
+
+  <app-main [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()" [screenWidth]="screenWidth()" />
 
 </div>

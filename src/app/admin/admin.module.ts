@@ -7,6 +7,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebnavComponent } from './layout/sidenav/sidenav.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MainComponent } from './layout/main/main.component';
 
 
 
@@ -14,7 +15,8 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     DashboardComponent,
     HeaderComponent,
-    SidebnavComponent
+    SidebnavComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,

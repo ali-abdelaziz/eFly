@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from '../layout/header/header.component';
-import { RouterOutlet } from '@angular/router';
-import { SidebarService } from '../services/sidebar.service';
-import { CommonModule } from '@angular/common';
-import { SidebnavComponent } from '../layout/sidenav/sidenav.component';
-import { ProductsComponent } from "../products/products.component";
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, Inject, PLATFORM_ID, signal } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,16 +9,36 @@ import { ProductsComponent } from "../products/products.component";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  isLeftSidebarCollapsed = signal<boolean>(false);
+  screenWidth = signal<number>(0);
 
-  isSidebarVisible = true;
-  constructor(private sidebarService: SidebarService) {}
+  constructor(
+    // inject the WINDOW token provided by the @angular/core module
+    @Inject(PLATFORM_ID) private platformId: any,
+  ) { }
+
+  ngOnInit(): void {
+    // resolve issue window is not defined as we're running our application in an (SSR) environment
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenWidth.set(window.innerWidth);
+    }
+    this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    // resolve issue window is not defined as we're running our application in an (SSR) environment
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenWidth.set(window.innerWidth);
+      if (this.screenWidth() < 768) {
+        this.isLeftSidebarCollapsed.set(true);
+      }
+    }
+  }
 
 
-  ngOnInit() {
-    this.sidebarService.sidebarVisibility$.subscribe((isVisible: any) => {
-      // console.log(isVisible)
-      this.isSidebarVisible = isVisible;
-    });
+  changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
+    this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
   }
 
 }
