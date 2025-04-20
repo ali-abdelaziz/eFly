@@ -1,16 +1,8 @@
-<nav class="navbar bg-body-tertiary container-fluid px-4">
-  <div class="d-flex align-items-center gap-3">
-    <div type="button" class="d-flex align-items-center gap-3 mt-3 mt-md-0" aria-label="Toggle Sidebar"
-      (click)="toggleSidebar()">
-      <img style="height: 40px; width: 40px" src="assets/logo/efly-logo.svg" alt="eFly" />
-    </div>
-    <span class="navbar-brand fw-bold primary">eFly</span>
-  </div>
-  <div class="d-flex align-items-center gap-3">
+<nav class="navbar">
+  <div class="d-flex align-items-center gap-3 mb-3">
     <div class="circle-btn let" type="button" routerLink="/not-found">
       <img src="assets/images/icons/notification.svg" alt="">
     </div>
-    <button class="btn btn-primary primary-btn" (click)="authService.logout()">Logout</button>
     <div class="nav-item" (click)="changeLanguage()">
       {{ dir.getValue() == "rtl" ? "English" : "العربية" }}
     </div>

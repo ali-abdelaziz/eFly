@@ -1,10 +1,10 @@
 <div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
-  <div class="logo-container">
+  <div class="logo-container d-flex justify-content-between align-items-center">
     <div class="logo" (click)="toggleCollapse()">
       <img src="assets/logo/efly-logo.svg" alt="">
     </div>
     @if (!isLeftSidebarCollapsed()) {
-    <div class="logo-text">eFly</div>
+    <!-- <div class="logo-text">eFly</div> -->
     <button class="btn-close" (click)="closeSidenav()">
       <i class="fal close-icon"></i>
     </button>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="logout-button">
-      <div class="d-flex align-items-center" (click)="logout()">
+      <div class="d-flex align-items-center" (click)="authService.logout()">
         <i class="fa-solid fa-right-from-bracket" style="color: red; font-size: 1.5rem"></i>
         @if (!isLeftSidebarCollapsed()) {
         <span class="logout-text">Log-out</span>

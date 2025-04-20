@@ -20,8 +20,6 @@
   width: 5rem;
 }
 .sidenav .logo-container {
-  display: flex;
-  align-items: center;
   padding: 0.938rem 0.938rem 0 0.938rem;
   width: 100%;
 }
@@ -49,7 +47,6 @@
   color: var(--primary);
 }
 .sidenav .logo-container .btn-close {
-  margin-left: auto;
   cursor: pointer;
   width: 2rem;
   height: 2rem;
@@ -80,6 +77,7 @@
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 3rem;
   color: var(--primary);
   text-decoration: none;
@@ -94,7 +92,7 @@
   padding: 12px;
 }
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
-  margin-left: 1.5rem;
+  padding: 12px;
   font-weight: 500;
 }
 .sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
@@ -154,6 +152,7 @@
 }
 .logout-button {
   padding: 0.708rem 0;
+  cursor: pointer;
 }
 
 .logout-text {

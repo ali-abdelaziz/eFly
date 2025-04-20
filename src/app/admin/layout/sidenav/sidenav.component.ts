@@ -1,5 +1,5 @@
 import { Component, input, OnInit, output } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -25,7 +25,7 @@ export class SidebnavComponent implements OnInit {
   ];
 
   constructor(
-    private router: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -37,9 +37,6 @@ export class SidebnavComponent implements OnInit {
 
   closeSidenav(): void {
     this.changeIsLeftSidebarCollapsed.emit(true);
-  }
-
-  logout() {
   }
 
 }
