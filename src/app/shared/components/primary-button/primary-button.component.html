@@ -4,7 +4,7 @@
   (click)="click()"
   [disabled]="isDisabled || isLoading"
 >
-  <div class="d-flex align-items-center justify-content-center gap-3">
+  <div class="d-flex align-items-center justify-content-center gap-2">
     <img [src]="prefixIcon" alt="" *ngIf="prefixIcon != ''" />
     <span class="label-regular">{{ label | translate }}</span>
     <img [src]="suffixIcon" alt="" *ngIf="suffixIcon != ''" />

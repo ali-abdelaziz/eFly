@@ -12,11 +12,13 @@ import { CustomPaginatorComponent } from '../../shared/components/custom-paginat
 import { Product } from '../../models/product.model';
 import { SnackBarService } from '../../auth/services/snackBar.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SaveCancelButtonComponent } from '../../shared/components/save-cancel-button/save-cancel-button.component';
+import { HelperService } from '../../shared/services/helper.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [PrimaryButtonComponent, SearchInputComponent, CustomPaginatorComponent, RouterModule, CommonModule, SharedModule, TranslateModule],
+  imports: [PrimaryButtonComponent, SaveCancelButtonComponent, SearchInputComponent, CustomPaginatorComponent, RouterModule, CommonModule, SharedModule, TranslateModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -26,6 +28,7 @@ export class ProductsComponent implements OnInit {
   allProducts: any;
   selectedProduct: WritableSignal<Product> = signal<Product>({} as Product);
   _id: any;
+  sortType: string = 'asc';
   filterValue = "";
   searchTerm: string = '';
   searchKey:string = "";
@@ -39,7 +42,8 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: SnackBarService,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    public helper: HelperService
   ) {
     this.products = this.productsService.products$;
     // this.allProducts = this.productsService.allProducts$;
@@ -74,6 +78,24 @@ export class ProductsComponent implements OnInit {
     .subscribe();
     this.spinnerService.hide();
   }
+
+  sortProducts() {
+    switch (this.sortType) {
+      case 'asc':
+        this.productsService.products$.update((products: any) => products.sort((a: Product, b: Product) => a.title.localeCompare(b.title)));
+        console.log(this.sortType);
+        this.sortType = 'desc';
+        break;
+      case 'desc':
+        this.productsService.products$.update((products: any) => products.sort((a: Product, b: Product) => b.title.localeCompare(a.title)));
+        this.sortType = 'asc';
+        break;
+        default:
+        this.productsService.products$.update((products: any) => products.sort((a: any, b: any) => a.id - b.id));
+        this.sortType = 'asc';
+    }
+  }
+
   // filterInputObservable(input: any) {
   //   this.filterValue = input;
   //   this.getAllProducts(1, this.pagenator$.getValue().pageSize, this.filterValue)
