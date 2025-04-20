@@ -1,5 +1,11 @@
-<nav class="navbar">
-  <div class="d-flex align-items-center gap-3 mb-3">
+<nav class="navbar d-flex justify-content-between">
+  <!-- Welcome message -->
+  <div class="welcome d-flex align-items-center justify-content-center rounded-4">
+    <span class="welcome-message">{{'user.welcomeBack' | translate}},
+      <span class="user">{{'user.aliMohamed' | translate}}!</span>
+    </span>
+  </div>
+  <div class="d-flex align-items-center gap-3">
     <div class="circle-btn let" type="button" routerLink="/not-found">
       <img src="assets/images/icons/notification.svg" alt="">
     </div>

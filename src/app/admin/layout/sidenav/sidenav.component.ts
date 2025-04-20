@@ -15,12 +15,12 @@ export class SidebnavComponent implements OnInit {
     {
       routeLink: 'products',
       icon: 'fa-solid fa-cubes',
-      label: 'Products',
+      label: 'sidenav.products',
     },
     {
       routeLink: 'categories',
       icon: 'fa-solid fa-list',
-      label: 'Categories',
+      label: 'sidenav.categories',
     }
   ];
 

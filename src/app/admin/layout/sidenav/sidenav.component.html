@@ -18,7 +18,7 @@
           [routerLinkActiveOptions]="{ exact: true }">
           <i class="sidenav-link-icon" [class]="item.icon"></i>
           @if (!isLeftSidebarCollapsed()) {
-          <span class="sidenav-link-text">{{ item.label }}</span>
+          <span class="sidenav-link-text">{{ item.label | translate }}</span>
           }
         </a>
       </li>
@@ -27,16 +27,16 @@
   </div>
   <!-- Profile & Logout -->
   <div class="logout-container d-flex flex-column gap-3">
-    <div class="profile">
+    <div class="profile" routerLink="/not-found">
       <div class="profile-image rounded-full bg-transparent d-flex align-items-center justify-content-center">
         <!-- <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="bg-transparent rounded-full w-6 h-6" /> -->
-        <i class="fa-solid fa-user" style="color: #7f00ff; font-size: 1.5rem"></i>
+        <i class="fa-solid fa-user" style="color: #2c3c4d; font-size: 1.5rem"></i>
       </div>
       <div class="d-flex align-items-center gap-2">
         @if (!isLeftSidebarCollapsed()) {
         <span class="profile-name d-flex flex-column gap-1">
-          <span>Ali Mohamed</span>
-          <span>Admin</span>
+          <span>{{'user.aliMohamed' | translate}}</span>
+          <span>{{'user.admin' | translate}}</span>
         </span>
         }
       </div>
@@ -45,7 +45,7 @@
       <div class="d-flex align-items-center" (click)="authService.logout()">
         <i class="fa-solid fa-right-from-bracket" style="color: red; font-size: 1.5rem"></i>
         @if (!isLeftSidebarCollapsed()) {
-        <span class="logout-text">Log-out</span>
+        <span class="logout-text">{{'sidenav.logout' | translate}}</span>
         }
       </div>
     </div>

@@ -1,7 +1,23 @@
 
-.navbar {
-  // background-color: #eff1f4 !important;
+.welcome {
+  height: 3rem;
+  background-color: #fff;
+  color: #162750;
+  padding: .8rem 1.5rem;
+
+  .welcome-message {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .user {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+  }
 }
+
 .circle-btn {
   display: flex;
   cursor: pointer;

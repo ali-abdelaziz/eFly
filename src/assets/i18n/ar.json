@@ -77,6 +77,12 @@
     "categories": "الفئات",
     "products": "المنتجات",
     "users": "المستخدمين",
-    "orders": "الطلبات"
+    "orders": "الطلبات",
+    "logout": "تسجيل الخروج"
+  },
+  "user": {
+    "aliMohamed": "علي محمد",
+    "admin": "مدير التطبيق",
+    "welcomeBack":"مرحبا بعودتك"
   }
 }

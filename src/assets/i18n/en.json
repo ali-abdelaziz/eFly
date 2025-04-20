@@ -77,6 +77,12 @@
     "categories": "Categories",
     "products": "Products",
     "orders": "Orders",
-    "users": "Users"
+    "users": "Users",
+    "logout": "Logout"
+  },
+  "user": {
+    "aliMohamed": "Ali Mohamed",
+    "admin": "Admin",
+    "welcomeBack": "Welcome Back"
   }
 }

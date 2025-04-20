@@ -77,9 +77,9 @@
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   height: 3rem;
-  color: var(--primary);
+  color: var(--primary-color);
   text-decoration: none;
   border-radius: 0.625rem;
   transition: all 0.3s ease;
@@ -93,6 +93,8 @@
 }
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
   padding: 12px;
+  padding-left: 30px;
+  padding-right: 30px;
   font-weight: 500;
 }
 .sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
@@ -148,7 +150,7 @@
 .profile-name {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-color);
 }
 .logout-button {
   padding: 0.708rem 0;
