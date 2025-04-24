@@ -58,6 +58,11 @@
 
               <ul class="dropdown-menu">
                 <li>
+                  <button class="dropdown-item primary-color" [routerLink]="['view', product.id]" type="button">
+                    {{ "common.view" | translate }}
+                  </button>
+                </li>
+                <li>
                   <button class="dropdown-item primary-color" [routerLink]="['edit', product.id]" type="button">
                     {{ "common.update" | translate }}
                   </button>
