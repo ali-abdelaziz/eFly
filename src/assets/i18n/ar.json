@@ -20,7 +20,8 @@
     "goBack": "العودة للخلف",
     "commingSoon": "هذه الميزة سوف تتوفر فى وقت لاحق",
     "view": "عرض",
-    "productDetails": "تفاصيل المنتج"
+    "productDetails": "تفاصيل المنتج",
+    "addToCart": "اضافة الى العربة"
   },
   "login": {
     "username": "اسم المستخدم",

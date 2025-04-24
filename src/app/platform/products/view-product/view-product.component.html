@@ -1,0 +1,78 @@
+<app-top-navigation class="mb-5" />
+
+<div class="content position-relative p-4">
+  <div class="header d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+    <h2 class="mb-0">{{ "common.productDetails" | translate }}</h2>
+    <app-primary-button
+      [label]="'common.goBack'"
+      (click)="goBack()"
+      [prefixIcon]="'assets/images/icons/arrow-left.svg'">
+    </app-primary-button>
+  </div>
+
+  <div class="product-details" *ngIf="product()">
+    <div class="row">
+      <!-- Product Image Section -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="image-container">
+          <img [src]="product().image" [alt]="product().title" class="product-image">
+          <div class="image-overlay">
+            <div class="image-info">
+              <span class="product-code">#{{ product().id }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details Section -->
+      <div class="col-md-8">
+        <div class="details-container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="detail-item">
+                <h5 class="detail-label">{{ "platform.products.title" | translate }}</h5>
+                <p class="detail-value">{{ product().title }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="detail-item">
+                <h5 class="detail-label">{{ "platform.products.category" | translate }}</h5>
+                <p class="detail-value">{{ product().category }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="detail-item">
+                <h5 class="detail-label">{{ "platform.products.price" | translate }}</h5>
+                <p class="detail-value">{{ product().price }} {{ "platform.products.egp" | translate }}</p>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="detail-item">
+                <h5 class="detail-label">{{ "platform.products.description" | translate }}</h5>
+                <p class="detail-value description-text">{{ product().description }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary primary-btn white" routerLink="/not-found">
+                  <img src="assets/images/icons/cart-white.svg" height="24px" width="24px" alt="" class="me-2">
+                  {{ "common.addToCart" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>

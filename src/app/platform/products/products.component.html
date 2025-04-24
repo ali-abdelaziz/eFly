@@ -131,7 +131,7 @@
       <!-- Product Card -->
       @for (product of productsByCategory | filter: searchKey: 'title'; track $index) {
       <div class="product-container transition">
-        <div class="product-img-container w-100 ">
+        <div class="product-img-container w-100 " (click)="viewProduct(product)">
           <div class="fav-buttons-container">
             <div class="fav-btn" type="button" (click)="addToFavorite(product)">
               <img *ngIf="!product.isFavorite" src="assets/images/icons/heart-gray.svg" height="35px" width="35px" alt="" srcset="">
@@ -147,7 +147,6 @@
           <div class="d-flex justify-content-between align-items-center w-100">
             <p class="price">{{product.price}} {{"platform.products.egp" | translate}}</p>
             <div class="addCard-button" role="button" routerLink="/not-found">
-              <!-- <img src="assets/images/icons/bag-white.svg" height="32px" width="32px" alt="" srcset =""> -->
               <img src="assets/images/icons/cart-white.svg" height="34px" width="34px" alt="" srcset="">
             </div>
           </div>

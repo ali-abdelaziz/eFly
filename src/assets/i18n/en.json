@@ -20,7 +20,8 @@
     "goBack": "Go Back",
     "commingSoon": "This feature will be available soon",
     "view": "View",
-    "productDetails": "Product Details"
+    "productDetails": "Product Details",
+    "addToCart": "Add to Cart"
   },
   "login": {
     "username": "Username",

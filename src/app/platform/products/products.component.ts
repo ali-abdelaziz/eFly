@@ -10,7 +10,7 @@ import { roleEnum } from '../../shared/roles/role.enum';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { PagenatorService } from '../../shared/services/pagenator.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SnackBarService } from '../../auth/services/snackBar.service';
@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
     private pagenatorService: PagenatorService,
     private spinnerService: NgxSpinnerService,
     private snackBar: SnackBarService,
+    private router: Router
   ) {
     this.pagenator$ = this.pagenatorService.pagenator$;
     // effect(() => {
@@ -126,6 +127,10 @@ export class ProductsComponent implements OnInit {
         }
         return p;
       }));
+    }
+
+    viewProduct(product: Product): void {
+      this.router.navigate(['/products', product.id]);
     }
 
 }
